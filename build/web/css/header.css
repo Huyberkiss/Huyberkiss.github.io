@@ -1,0 +1,17 @@
+body{
+	font-family: sans-serif;
+}
+
+.navbar .nav-link{
+	font-size: 14px;
+	text-transform: uppercase;
+	padding: 0 20px !important;
+}
+
+.navbar-toogler{
+	outline: none;
+}
+
+.bg-black{
+	background: #000;
+}
