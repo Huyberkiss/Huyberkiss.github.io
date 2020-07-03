@@ -66,7 +66,7 @@
                         <p>Sunday: 10:00am - 5:00pm</p>
                     </div>
                 </div>
-                <div class="footer-bottom ">
+                <div class="footer-bottom container-fluid ">
                     &copy; huyberkiss.com | Designed by NODE
                 </div>
         </footer>
