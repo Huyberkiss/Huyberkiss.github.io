@@ -1,0 +1,26 @@
+ .form-container{
+    border: 1px solid black;
+    padding: 20px 30px;
+    margin-top: 20vh;
+    box-shadow: -1px 4px 25px 10px rgba(0,0,0,0.7);
+}
+
+.bg-form {
+    background: url('../img/bglogin.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+   
+}
+
+.control-text {
+    font-size: 18px;
+    margin-left: 23vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.btn-control{
+    margin-top: 10px;
+    margin-left: 25vh;
+}

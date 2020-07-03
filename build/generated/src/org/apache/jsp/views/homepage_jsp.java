@@ -264,7 +264,7 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
-      out.write("                    <div class=\"col-sm-4l mb-4\">\n");
+      out.write("                    <div class=\"col-md-4 mb-4\">\n");
       out.write("                        <div class=\"card h-100\">\n");
       out.write("                            <img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -275,7 +275,7 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
-      out.write("                    <div class=\"col-sm-4 mb-4\">\n");
+      out.write("                    <div class=\"col-md-4 mb-4\">\n");
       out.write("                        <div class=\"card h-100\">\n");
       out.write("                            <img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -286,7 +286,7 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
-      out.write("                    <div class=\"col-sm-4 mb-4\">\n");
+      out.write("                    <div class=\"col-md-4 mb-4\">\n");
       out.write("                        <div class=\"card h-100\">\n");
       out.write("                            <img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -297,7 +297,7 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
-      out.write("                    <div class=\"col-sm-4 mb-4\">\n");
+      out.write("                    <div class=\"col-md-4 mb-4\">\n");
       out.write("                        <div class=\"card h-100\">\n");
       out.write("                            <img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -307,8 +307,8 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <p class=\"card-text\">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
-      out.write("                    </div>                    \n");
-      out.write("                    <div class=\"col-sm-4 mb-4\">\n");
+      out.write("                    </div>                 \n");
+      out.write("                    <div class=\"col-md-4 mb-4\">\n");
       out.write("                        <div class=\"card h-100\">\n");
       out.write("                            <img src=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));

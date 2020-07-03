@@ -10,36 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
         <style>
-            footer{
-                background: #000;
-
-            }
-
-            .f-custom{
-                margin-top: 20px;
-            }
-            
-            .f-custom > a{
-                margin-left:15px;
-                margin-right: 15px;
-            }
-            
-            .f-custom > h4{
-                color: #fff;    
-                text-transform: uppercase;
-            }
-            
-            .f-custom > p{
-                color: #fff;
-            }
-            
-            .footer-bottom{
-                background: #cdc;
-                margin-top: 20px;
-                text-align: center;
-                width: 100%;
-                
-            }
+            <%@include file="/css/footer.css" %>
         </style>
     </head>
     <body>
@@ -66,7 +37,7 @@
                         <p>Sunday: 10:00am - 5:00pm</p>
                     </div>
                 </div>
-                <div class="footer-bottom container-fluid ">
+                <div class="footer-bottom ">
                     &copy; huyberkiss.com | Designed by NODE
                 </div>
         </footer>

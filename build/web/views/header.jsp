@@ -15,8 +15,8 @@
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-black fixed-top">
+            <div class="container">
                 <a href="#" class="navbar-brand">BerKissG</a>
                 <button class="navbar-toggler" data-toggle="collapse"
                         data-target="#navbarCollapse">
@@ -33,7 +33,9 @@
                         <li class="nav-item"><a href="#" class="nav-link"> <i
                                     class="fa fa-shopping-cart fa-2x"></i>
                             </a></li>
-                                    <li class="nav-item"><a href="#" class="nav-link">
+                            
+                            
+                            <li class="nav-item"><a href="../views/login.jsp" class="nav-link">
                                            <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
 
                                 </a></li>
