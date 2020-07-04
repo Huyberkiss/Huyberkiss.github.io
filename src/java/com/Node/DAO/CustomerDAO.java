@@ -75,4 +75,26 @@ public class CustomerDAO {
         return -1;
     }
 
+     public Customer getCustomer(int cId) {
+
+        try {
+            String sql = "SELECT * FROM `customer` WHERE `cId`= ?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, cId);
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return new Customer(rs.getInt("cId"), rs.getString("cName") , rs.getString("cUser"),rs.getString("cPass"),
+                        rs.getDate("cDob"),rs.getString("cAddress"), rs.getString("cPhone"), rs.getString("cEmail"),
+                        rs.getInt("cGender"),rs.getString("cDescription"),rs.getInt("cStatus"));
+                
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
 }

@@ -5,7 +5,12 @@ body{
 .navbar .nav-link{
 	font-size: 14px;
 	text-transform: uppercase;
-	padding: 0 20px !important;
+	padding: 10px 20px !important;
+}
+
+.control-name{
+    margin-left: 15px;
+    margin-top: 10px;
 }
 
 .navbar-toogler{

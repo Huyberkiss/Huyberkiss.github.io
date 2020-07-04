@@ -8,6 +8,10 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>com.Node.Controller.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logoutController</servlet-name>
+        <servlet-class>com.Node.Controller.logoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/RegisterController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutController</servlet-name>
+        <url-pattern>/logoutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

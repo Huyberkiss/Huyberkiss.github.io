@@ -4,7 +4,11 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.DAO.CustomerDAO"%>
+<%@page import="com.Node.Entity.Customer"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,14 +20,14 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-black fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <a href="#" class="navbar-brand">BerKissG</a>
                 <button class="navbar-toggler" data-toggle="collapse"
                         data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto ">
+                    <ul class="navbar-nav ml-auto  ">
                         <li class="nav-item active"><a href="#" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item"><a href="#" class="nav-link">Products</a>
@@ -33,12 +37,40 @@
                         <li class="nav-item"><a href="#" class="nav-link"> <i
                                     class="fa fa-shopping-cart fa-2x"></i>
                             </a></li>
+                           
 
+                        <%
 
-                        <li class="nav-item"><a href="../views/login.jsp" class="nav-link">
-                                <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-                            </a>
-                        </li>
+                            String lastName = "";
+                            if (session.getAttribute("id") != null) {
+                                int id = Integer.parseInt(session.getAttribute("id").toString());
+                                Customer obj = new CustomerDAO().getCustomer(id);
+
+                                String[] name = obj.getcName().split(" ");
+
+                                lastName = name[name.length - 1];
+                            }
+//param.id == -1  || empty param.id
+
+                        %>
+
+                       
+                            <c:if test="${empty id}">
+                                <li class="nav-item btn btn-outline-secondary btn-sm"><a href="../views/login.jsp" class="nav-link">
+                                        Login
+                                    </a>
+                                </li> 
+                            </c:if>
+                                <c:if test="${not empty id}">
+
+                                <li class="nav-item"><a href="#" class="nav-link"> 
+                                        <i
+                                            class="fa fa-user-o fa-2x"></i>
+                                    </a></li>
+                                <li class="nav-item text-center text-secondary">Hello , <%= lastName%><a href="../logoutController" class="nav-link">Logout</a></li>
+                                </c:if>
+
+                       
                     </ul>
                 </div>
             </div>

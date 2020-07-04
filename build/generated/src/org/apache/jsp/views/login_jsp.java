@@ -67,20 +67,20 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        <style>\r\n");
       out.write("            ");
-      out.write(" .form-container{\r\n");
+      out.write(".form-container{\r\n");
       out.write("    border: 1px solid black;\r\n");
       out.write("    padding: 20px 30px;\r\n");
       out.write("    margin-top: 20vh;\r\n");
       out.write("    box-shadow: -1px 4px 25px 10px rgba(0,0,0,0.7);\r\n");
       out.write("}\r\n");
       out.write("\r\n");
-      out.write(".bg-form {\r\n");
+      out.write("body{\r\n");
       out.write("    background: url('../img/bglogin.jpg') no-repeat;\r\n");
       out.write("    background-size: cover;\r\n");
       out.write("    background-position: center;\r\n");
       out.write("    height: 100vh;\r\n");
-      out.write("   \r\n");
       out.write("}\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write(".control-text {\r\n");
       out.write("    font-size: 18px;\r\n");
@@ -112,6 +112,17 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <label for=\"formGroupExampleInput2\" class=\"text-light\" style=\"font-size: 18px\">Password</label>\r\n");
       out.write("                            <input type=\"password\" class=\"form-control\" id=\"formGroupExampleInput2\" name=\"pass\" placeholder=\"Password\" required>\r\n");
       out.write("                        </div>\r\n");
+      out.write("\r\n");
+      out.write("                        ");
+ if (request.getParameter("isLogin") != null) {
+                                if (request.getParameter("isLogin").equals("false")) {
+                                    out.println(" <div class=" + "\"alert alert-danger\"" + "role=\"alert\">");
+                                    out.println("Login failed, Wrong user or password!");
+                                    out.print("</div>");
+                                }
+                            }
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("                        <div class=\"control-text \">\r\n");
       out.write("                            <a href=\"#\" class=\"text-dark\"> Don't have account ? create one ! </a>\r\n");
       out.write("                        </div>\r\n");

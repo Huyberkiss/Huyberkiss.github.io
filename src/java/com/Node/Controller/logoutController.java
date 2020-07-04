@@ -5,10 +5,8 @@
  */
 package com.Node.Controller;
 
-import com.Node.DAO.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.jws.WebService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-public class LoginController extends HttpServlet {
+public class logoutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,19 +29,8 @@ public class LoginController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        request.getSession().invalidate();
+        response.sendRedirect(request.getContextPath() + "/views/homepage.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,22 +59,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("btnSubmit") != null) {
 
-            String user = request.getParameter("user");
-            String pass = request.getParameter("pass");
-
-            CustomerDAO cDAO = new CustomerDAO();
-
-            int cId = cDAO.login(user, pass);
-            if (cId > 0) {
-                request.getSession().setAttribute("id", cId);
-               response.sendRedirect("views/homepage.jsp");
-            } else {
-                   
-                 response.sendRedirect("views/login.jsp?isLogin=false");
-            }
-        }
     }
 
     /**
