@@ -39,6 +39,15 @@
                             <label for="formGroupExampleInput2" class="text-light" style="font-size: 18px">Password</label>
                             <input type="password" class="form-control" id="formGroupExampleInput2" name="pass" placeholder="Password" required>
                         </div>
+
+                        <% if (request.getParameter("isLogin") != null) {
+                                if (request.getParameter("isLogin").equals("false")) {
+                                    out.println(" <div class=" + "\"alert alert-danger\"" + "role=\"alert\">");
+                                    out.println("Login failed, Wrong user or password!");
+                                    out.print("</div>");
+                                }
+                            }%>
+
                         <div class="control-text ">
                             <a href="#" class="text-dark"> Don't have account ? create one ! </a>
                         </div>

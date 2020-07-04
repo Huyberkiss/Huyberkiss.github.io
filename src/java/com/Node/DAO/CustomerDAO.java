@@ -52,37 +52,26 @@ public class CustomerDAO {
 
         return 0;
     }
-    
-    public int login(String user , String pass){
-        
+
+    public int login(String user, String pass) {
+
         try {
             String sql = "SELECT * FROM `customer` WHERE `cUser`= ? AND `cPass` = MD5(?)";
-            
             PreparedStatement pst = conn.prepareStatement(sql);
-            
             pst.setString(1, user);
             pst.setString(2, pass);
-            
+
             ResultSet rs = pst.executeQuery();
-            
-            String cUser = "";
-            String cPass = "";
             int cId = 0;
-            
-            if(rs.next()){
-              cUser = rs.getString("cUser");
-              cPass = rs.getString("cPass");
-              cId = rs.getInt("cId");
+            if (rs.next()) {
+                return rs.getInt("cId");
+
             }
-            
-            if(cUser.equals(user) && cPass.equals(pass)){
-                return cId;
-            }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return -1;
     }
 

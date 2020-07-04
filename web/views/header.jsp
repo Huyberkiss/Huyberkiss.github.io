@@ -33,16 +33,16 @@
                         <li class="nav-item"><a href="#" class="nav-link"> <i
                                     class="fa fa-shopping-cart fa-2x"></i>
                             </a></li>
-                            
-                            
-                            <li class="nav-item"><a href="../views/login.jsp" class="nav-link">
-                                           <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
 
-                                </a></li>
+
+                        <li class="nav-item"><a href="../views/login.jsp" class="nav-link">
+                                <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-      
+
 </html>

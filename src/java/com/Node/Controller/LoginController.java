@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-
 public class LoginController extends HttpServlet {
 
     /**
@@ -38,7 +37,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -73,19 +72,20 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getParameter("btnSubmit") != null){
-            
+        if (request.getParameter("btnSubmit") != null) {
+
             String user = request.getParameter("user");
             String pass = request.getParameter("pass");
-            
+
             CustomerDAO cDAO = new CustomerDAO();
-            
+
             int cId = cDAO.login(user, pass);
-            
-                if(cId < 0){
-                 
-                   response.sendRedirect("views/homepage.jsp?id="+cId);
-                }
+            if (cId > 0) {
+                response.sendRedirect("views/homepage.jsp?id=" + cId);
+            } else {
+                   
+                 response.sendRedirect("views/login.jsp?isLogin=false");
+            }
         }
     }
 
