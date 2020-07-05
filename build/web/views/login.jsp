@@ -49,7 +49,7 @@
                             }%>
 
                         <div class="control-text ">
-                            <a href="#" class="text-dark"> Don't have account ? create one ! </a>
+                            <a href="../views/register.jsp" class="text-dark"> Don't have account ? create one ! </a>
                         </div>
                         <button type="submit" class="btn btn-success  btn-lg btn-control" name="btnSubmit"> Enter </button>
                     </form>
