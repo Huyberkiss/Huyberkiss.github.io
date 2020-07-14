@@ -25,6 +25,9 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
+        
+        
+        
         <div class="container mt-5">
             <div class="row">
                 <c:forEach var="x" begin="1" end="8">       
