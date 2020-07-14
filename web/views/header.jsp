@@ -28,7 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto  ">
-                        <li class="nav-item active"><a href="#" class="nav-link">Home</a>
+                        <li class="nav-item active"><a href="homepage.jsp" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item"><a href="product.jsp" class="nav-link">Products</a>
                         </li>
