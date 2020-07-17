@@ -26,50 +26,101 @@
                 background-color:  #ffc7e5;
             }
 
+
+
+            .card{
+                border : 1px solid white;
+            }
+
             .card-text{
                 display: block;
             }
 
-            .class-controll{
-                margin-top: 70px !important;
+            body{
+                background-color: #eee;
             }
 
-          
+            .class-control{
+                margin-top: 70px !important;
+
+            }
+
+            .products  div {
+                width: 80% !important; 
+            }
+
+            .filter{
+                width: 50% !important;
+                height: 28vh;
+                border : 4px solid lightsteelblue;
+                margin-right: 20px;
+                padding: 10px;
+            }
+
+            .filter-name{
+                font-size: 22px;
+                text-align: center;
+                font-weight: bold;
+                color: darkslateblue;
+            }
+
+            .btn-card{
+
+            }
+
         </style>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
 
-        
 
-        <div class="container class-controll">
+
+        <div class="container class-control">
             <h1 class="text-center font-weight-bold">Product</h1>
             <hr>
-            <div class="row">
-                <c:forEach var="x" begin="1" end="8">       
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100 ">
-                            <img src="${pageContext.request.contextPath}/img/pd${x}.jpg" class="card-img-top w-100"/>
-                            <div class="card-body  color-card">
-                                <div class="card-text d-flex justify-content-between">
-                                    <h5 class="card-title">Product --</h5>
-                                    <span >$300</span>
-
-                                </div>
-                                <div class="card-text d-flex justify-content-between">
-                                   <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary"> View Detail </button>
-                                <button type="button" onclick="window.location.href = 'shopping-cart.jsp'" class="btn btn-light"> Order </button>
-
-                                </div>
-                                
-
-                            </div>
+            <div class="row ">
+                <div class=" col-md-2 filter">
+                    <h3 class="filter-name">Filter Product</h3>
+                    <form class="form my-2 my-lg-0 ">
+                        <input class="form-control mr-sm-2 mb-2 " size="10" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 "  type="submit">Search</button>
+                    </form>
+                    <div style="padding-top: 10px" class="btn-group dropright">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Sort by:
+                        </button>
+                        <div class="dropdown-menu">
+                           <button class="dropdown-item "  type="button">A-Z</button>
+                            <button class="dropdown-item "  type="button">Z-A</button>
+                             <button class="dropdown-item "  type="button">Highest Money</button>
+                              <button class="dropdown-item "  type="button">Lowest Money</button>
                         </div>
                     </div>
-                </c:forEach>
+                </div>
+                <div class="row col-md-10 product">
+                    <c:forEach var="x" begin="1" end="8">       
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 ">
+                                <img src="${pageContext.request.contextPath}/img/pd${x}.jpg" class="card-img-top w-100"/>
+                                <div class="card-body  color-card">
+                                    <div class="card-text d-flex justify-content-between">
+                                        <h5 class="card-title">Product --</h5>
+                                        <span >$300</span>
+
+                                    </div>
+                                    <div class="card-text d-flex justify-content-between btn-card">
+                                        <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary" style="font-size: 14px"> View  </button>
+                                        <button type="button" onclick="window.location.href = 'shopping-cart.jsp'" class="btn btn-light"style="font-size: 14px"> Order </button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
-
-
     </body>
 </html>
