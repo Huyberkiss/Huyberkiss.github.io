@@ -79,7 +79,7 @@
             <h1 class="text-center font-weight-bold">Product</h1>
             <hr>
             <div class="row ">
-                <div class=" col-md-2 filter">
+                <div class=" col-md-3 filter">
                     <h3 class="filter-name">Filter Product</h3>
                     <form class="form my-2 my-lg-0 ">
                         <input class="form-control mr-sm-2 mb-2 " size="10" type="search" placeholder="Search" aria-label="Search">
@@ -97,9 +97,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row col-md-10 product">
+                <div class="row col-md-9 product">
                     <c:forEach var="x" begin="1" end="8">       
-                        <div class="col-md-3 mb-4">
+                        <div class="col-md-4 mb-4">
                             <div class="card h-100 ">
                                 <img src="${pageContext.request.contextPath}/img/pd${x}.jpg" class="card-img-top w-100"/>
                                 <div class="card-body  color-card">
@@ -109,7 +109,7 @@
 
                                     </div>
                                     <div class="card-text d-flex justify-content-between btn-card">
-                                        <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary" style="font-size: 14px"> View  </button>
+                                        <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary" style="font-size: 14px"> View detail  </button>
                                         <button type="button" onclick="window.location.href = 'shopping-cart.jsp'" class="btn btn-light"style="font-size: 14px"> Order </button>
 
                                     </div>
@@ -122,5 +122,6 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

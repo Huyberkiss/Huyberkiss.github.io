@@ -28,16 +28,16 @@
     <body>
         <div class="container-fluid bg-form">
             <div class="row">
-                <div class="col-md-4 mx-auto form-container">
-                    <h1 class="font-weight-bold  text-light" style="text-transform: uppercase">Login</h1>
+                <div class="col-md-4 mx-auto form-container form-login">
+                    <h1 class="font-weight-bold  text-light text-center" style="text-transform: uppercase">Login</h1>
                     <form action="${pageContext.request.contextPath}/LoginController" method="POST">
                         <div class="form-group">
                             <label for="formGroupExampleInput" class="text-light" style="font-size: 18px">User</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" name="user" placeholder="User name" required >
+                            <input type="text" class="form-control" id="formGroupExampleInput" name="user" placeholder="User name" required autofocus >
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2" class="text-light" style="font-size: 18px">Password</label>
-                            <input type="password" class="form-control" id="formGroupExampleInput2" name="pass" placeholder="Password" required>
+                            <input type="password" class="form-control" id="formGroupExampleInput2" name="pass" placeholder="Password" required >
                         </div>
 
                         <% if (request.getParameter("isLogin") != null) {
@@ -51,7 +51,7 @@
                         <div class="control-text ">
                             <a href="../views/register.jsp" class="text-dark"> Don't have account ? create one ! </a>
                         </div>
-                        <button type="submit" class="btn btn-success  btn-lg btn-control" name="btnSubmit"> Enter </button>
+                            <button type="submit" class="btn btn-success  btn-lg btn-control" style="background-color: #5c5938" name="btnSubmit"> Enter </button>
                     </form>
                 </div>
             </div>
