@@ -79,7 +79,12 @@ public final class product_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                background-color:  #ffc7e5;\r\n");
       out.write("            }\r\n");
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("            h5{\r\n");
+      out.write("                font-family: sans-serif;\r\n");
+      out.write("                font-size: 10px;\r\n");
+      out.write("                font-weight: bold;\r\n");
+      out.write("               padding-bottom: 10px;\r\n");
+      out.write("            }\r\n");
       out.write("\r\n");
       out.write("            .card{\r\n");
       out.write("                border : 1px solid white;\r\n");
@@ -117,8 +122,13 @@ public final class product_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                color: darkslateblue;\r\n");
       out.write("            }\r\n");
       out.write("\r\n");
-      out.write("            .btn-card{\r\n");
-      out.write("\r\n");
+      out.write("            .pd-price{\r\n");
+      out.write("             \r\n");
+      out.write("               \r\n");
+      out.write("                    font-family: monospace;\r\n");
+      out.write("               \r\n");
+      out.write("              \r\n");
+      out.write("              \r\n");
       out.write("            }\r\n");
       out.write("\r\n");
       out.write("        </style>\r\n");
@@ -130,7 +140,7 @@ public final class product_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        ");
 
-            ArrayList<Product> listProduct = (ArrayList<Product>)request.getAttribute("listProduct");
+           // ArrayList<Product> listProduct = (ArrayList<Product>)request.getAttribute("listProduct");
            // pageContext.setAttribute("listProduct", listProduct);
 
         
@@ -193,7 +203,7 @@ public final class product_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
     _jspx_th_c_forEach_0.setVar("i");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${param.listProduct}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listProduct}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -206,17 +216,24 @@ public final class product_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("/img/");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.imgID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\" class=\"card-img-top w-100\"/>\r\n");
+          out.write(".jpg\" class=\"card-img-top\"/>\r\n");
           out.write("                                <div class=\"card-body  color-card\">\r\n");
-          out.write("                                    <div class=\"card-text d-flex justify-content-between\">\r\n");
-          out.write("                                        <h5 class=\"card-title\">Product --</h5>\r\n");
-          out.write("                                        <span >$300</span>\r\n");
-          out.write("\r\n");
+          out.write("                                    <div class=\"card-text \">\r\n");
+          out.write("                                        <h5 class=\"card-title\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h5>\r\n");
+          out.write("                                        <span class=\"d-flex justify-content-end pd-price\">Price: $");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.price}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span>\r\n");
           out.write("                                    </div>\r\n");
           out.write("                                    <div class=\"card-text d-flex justify-content-between btn-card\">\r\n");
-          out.write("                                        <button type=\"button\" onclick=\"window.location.href = 'product-detail.jsp'\" class=\"btn btn-primary\" style=\"font-size: 14px\"> View detail  </button>\r\n");
-          out.write("                                        <button type=\"button\" onclick=\"window.location.href = 'shopping-cart.jsp'\" class=\"btn btn-light\"style=\"font-size: 14px\"> Order </button>\r\n");
-          out.write("\r\n");
+          out.write("                                        \r\n");
+          out.write("                                        <button type=\"button\" onclick=\"window.location.href = '");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("/ProductDetailController?id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("'\"\r\n");
+          out.write("                                                class=\"btn btn-light\"style=\"font-size: 14px\"> Order </button>\r\n");
           out.write("                                    </div>\r\n");
           out.write("\r\n");
           out.write("\r\n");

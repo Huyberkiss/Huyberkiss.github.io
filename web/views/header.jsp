@@ -21,16 +21,16 @@
     <body>
         <nav class="navbar navbar-expand-sm navbar-dark bg-black fixed-top">
             <div class="container-fluid">
-                <a href="homepage.jsp" class="navbar-brand">BerKissG</a>
+                <a href="${pageContext.request.contextPath}/views/homepage.jsp" class="navbar-brand">BerKissG</a>
                 <button class="navbar-toggler" data-toggle="collapse"
                         data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto  ">
-                        <li class="nav-item active"><a href="homepage.jsp" class="nav-link">Home</a>
+                        <li class="nav-item active"><a href="${pageContext.request.contextPath}/views/homepage.jsp" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item"><a href="../ProductController" class="nav-link">Products</a>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/ProductController" class="nav-link">Products</a>
                         </li>
                         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>

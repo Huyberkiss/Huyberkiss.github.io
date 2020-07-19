@@ -71,8 +71,13 @@
                 color: darkslateblue;
             }
 
-            .btn-card{
-
+            .pd-price{
+             
+               
+                    font-family: monospace;
+               
+              
+              
             }
 
         </style>
@@ -114,13 +119,14 @@
                             <div class="card h-100 ">
                                 <img src="${pageContext.request.contextPath}/img/${i.imgID}.jpg" class="card-img-top"/>
                                 <div class="card-body  color-card">
-                                    <div class="card-text d-flex justify-content-between">
+                                    <div class="card-text ">
                                         <h5 class="card-title">${i.name}</h5>
-                                      
+                                        <span class="d-flex justify-content-end pd-price">Price: $${i.price}</span>
                                     </div>
                                     <div class="card-text d-flex justify-content-between btn-card">
-                                        <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary" style="font-size: 14px"> View detail  </button>
-                                        <button type="button" onclick="window.location.href = 'shopping-cart.jsp'" class="btn btn-light"style="font-size: 14px"> Order </button>
+                                        
+                                        <button type="button" onclick="window.location.href = '${pageContext.request.contextPath}/ProductDetailController?id=${i.id}'"
+                                                class="btn btn-light"style="font-size: 14px"> Order </button>
                                     </div>
 
 

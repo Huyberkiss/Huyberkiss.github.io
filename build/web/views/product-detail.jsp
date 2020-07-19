@@ -4,7 +4,9 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.Entity.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,11 +27,14 @@
                 margin-top: 100px;
                 padding : 50px;
                 background-color: #fff;
+                height: 81vh;
+              
 
             }
 
             body{
-                background-color: #eee; 
+                background: #eecda3;
+               
             }
 
             h1{
@@ -47,28 +52,38 @@
             
             button{
                 width: 40%;
+                 
+            }
+            
+            p{
+                font-family: sans-serif;
             }
 
         </style>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <div class="container">
+        
+        <div class="container rounded shadow-sm">
             <h1 class="text-center">Product detail</h1>
             <hr>
             <div class="row">
                 <div class="col-md-5">
-                    <img src="${pageContext.request.contextPath}/img/carousel3.jpg" class="d-block w-100" alt="...">
+                    <c:forEach var="i" items="${listIMG}">
+                    <img src="${pageContext.request.contextPath}/img/${i.url}" class="d-block w-100" alt="...">
+                    </c:forEach>
                 </div>
                 <div class="col-md-7">
                     <p class="newarrival text-center">HOT</p>
-                    <h2 style="color: #555">Day chuyen dat gia </h2>
-                    <p><b>product code:</b> #hihi02</p>
-                    <p><b>Availability:</b> In stock</p>
-                    <p><b>Condition:</b> New</p>
-                    <p><b>Type:</b> day chuyen </p>
-                    <p><b>Brand:</b> Company</p>
-                    <p><b>Price:</b> $200</p>
+                    <h3>${product.name}</h3>
+                    <p><b>Price: </b> $${product.price}0</p>
+                    <p><b>Brand: </b>${product.brand}</p>
+                    <p><b>Type: </b>${product.type}</p>
+                    <p><b>Category: </b>${product.category}</p>
+                    <p><b>Color: </b>${product.color}</p>
+                    <p><b>Length: </b>${product.length}</p>
+                    <p><b>Description: </b>${product.description}</p>
+                   
                     <div class="d-flex justify-content-center">
                         <button type="button" class="btn  btn-dark btn-lg" onclick="window.location.href='../ShoppingCartController'">Order now</button>
                     </div>
