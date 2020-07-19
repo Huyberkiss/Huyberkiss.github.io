@@ -322,7 +322,9 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </section>\r\n");
-      out.write("\r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
+      out.write("                            \r\n");
       out.write("        <section class=\"testimontials\">\r\n");
       out.write("            <div class=\"container inner \">\r\n");
       out.write("                <h1 class=\"text-center font-weight-bold \" style=\"text-transform: uppercase\"> Somes review about company</h1>\r\n");

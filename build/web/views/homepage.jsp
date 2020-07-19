@@ -177,7 +177,9 @@
                 </div>
             </div>
         </section>
-
+                            
+                            
+                            
         <section class="testimontials">
             <div class="container inner ">
                 <h1 class="text-center font-weight-bold " style="text-transform: uppercase"> Somes review about company</h1>

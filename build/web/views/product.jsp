@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.Entity.Product"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -26,7 +28,12 @@
                 background-color:  #ffc7e5;
             }
 
-
+            h5{
+                font-family: sans-serif;
+                font-size: 10px;
+                font-weight: bold;
+               padding-bottom: 10px;
+            }
 
             .card{
                 border : 1px solid white;
@@ -73,7 +80,11 @@
     <body>
         <jsp:include page="header.jsp"/>
 
+        <%
+           // ArrayList<Product> listProduct = (ArrayList<Product>)request.getAttribute("listProduct");
+           // pageContext.setAttribute("listProduct", listProduct);
 
+        %>
 
         <div class="container class-control">
             <h1 class="text-center font-weight-bold">Product</h1>
@@ -98,20 +109,18 @@
                     </div>
                 </div>
                 <div class="row col-md-9 product">
-                    <c:forEach var="x" begin="1" end="8">       
+                    <c:forEach var="i" items="${listProduct}">       
                         <div class="col-md-4 mb-4">
                             <div class="card h-100 ">
-                                <img src="${pageContext.request.contextPath}/img/pd${x}.jpg" class="card-img-top w-100"/>
+                                <img src="${pageContext.request.contextPath}/img/${i.imgID}.jpg" class="card-img-top"/>
                                 <div class="card-body  color-card">
                                     <div class="card-text d-flex justify-content-between">
-                                        <h5 class="card-title">Product --</h5>
-                                        <span >$300</span>
-
+                                        <h5 class="card-title">${i.name}</h5>
+                                      
                                     </div>
                                     <div class="card-text d-flex justify-content-between btn-card">
                                         <button type="button" onclick="window.location.href = 'product-detail.jsp'" class="btn btn-primary" style="font-size: 14px"> View detail  </button>
                                         <button type="button" onclick="window.location.href = 'shopping-cart.jsp'" class="btn btn-light"style="font-size: 14px"> Order </button>
-
                                     </div>
 
 

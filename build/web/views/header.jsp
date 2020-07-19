@@ -30,7 +30,7 @@
                     <ul class="navbar-nav ml-auto  ">
                         <li class="nav-item active"><a href="homepage.jsp" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item"><a href="product.jsp" class="nav-link">Products</a>
+                        <li class="nav-item"><a href="../ProductController" class="nav-link">Products</a>
                         </li>
                         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
