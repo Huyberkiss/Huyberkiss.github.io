@@ -22,19 +22,23 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="./src/bootstrap-input-spinner.js"></script>
+        <script>
+            $("input[type='number']").inputSpinner()
+        </script>
         <style>
             .container{
                 margin-top: 100px;
                 padding : 50px;
                 background-color: #fff;
-                height: 81vh;
-              
+                height: 100vh;
+
 
             }
 
             body{
                 background: #eecda3;
-               
+
             }
 
             h1{
@@ -49,12 +53,12 @@
                 font-size: 12px;
                 font-weight: bold;
             }
-            
+
             button{
                 width: 40%;
-                 
+
             }
-            
+
             p{
                 font-family: sans-serif;
             }
@@ -63,14 +67,14 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        
+
         <div class="container rounded shadow-sm">
             <h1 class="text-center">Product detail</h1>
             <hr>
             <div class="row">
                 <div class="col-md-5">
                     <c:forEach var="i" items="${listIMG}">
-                    <img src="${pageContext.request.contextPath}/img/${i.url}" class="d-block w-100" alt="...">
+                        <img src="${pageContext.request.contextPath}/img/${i.url}" class="d-block w-100" alt="...">
                     </c:forEach>
                 </div>
                 <div class="col-md-7">
@@ -83,9 +87,9 @@
                     <p><b>Color: </b>${product.color}</p>
                     <p><b>Length: </b>${product.length}</p>
                     <p><b>Description: </b>${product.description}</p>
-                   
+                    <input placeholder="Enter a number" required type="number" value="" min="-100" max="100"/>
                     <div class="d-flex justify-content-center">
-                        <button type="button" class="btn  btn-dark btn-lg" onclick="window.location.href='../ShoppingCartController'">Order now</button>
+                        <button type="button" class="btn  btn-dark btn-lg" onclick="window.location.href = '../ShoppingCartController'">Order now</button>
                     </div>
                 </div>
 
