@@ -1,59 +1,146 @@
 <%-- 
     Document   : register
-    Created on : Jul 5, 2020, 10:14:40 AM
-    Author     : Admin
+    Created on : Jul 14, 2020, 9:00:18 PM
+    Author     : BaoNQ
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-        <title>JSP Page</title>
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!-- Website CSS style -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Website Font style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+        <title>Register</title>
+        <style>
+            <%@include file="/css/register.css" %>
+        </style>
     </head>
+
     <body>
-        <form>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault01">First name</label>
-                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <div class="container">
+            <div class="row main">
+                <div class="main-login main-center">
+                    <form method="post" action="${pageContext.request.contextPath}/RegisterController" onsubmit="return validation()">
+
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cName"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="name" id="name" autocomplete="OFF"  placeholder="Enter your Name here"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob" class="cols-sm-2 control-label">Your Birthday</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cDob"><i class="fa fa-gift fa" aria-hidden="true"></i></span>
+                                    <input type="date" class="form-control" name="dob" id="dob" autocomplete="OFF"  placeholder="Enter your Birthday here"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="cols-sm-2 control-label">Your Phone</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cPhone"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="phone" id="phone" autocomplete="OFF"  placeholder="Enter your Phone here"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender" class="cols-sm-2 control-label">Your Gender</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group"> 
+                                    <span class="input-group-addon" id="cGender"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select id="gender" name="gender" class="form-control" autocomplete="OFF">
+                                        <option value="0">Male</option>
+                                        <option value="1">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cEmail"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="email" id="email" autocomplete="OFF" placeholder="Enter your Email here"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="cols-sm-2 control-label">Your Address</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cAddress"><i class="fa fa-map fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="address" id="address"autocomplete="OFF"  placeholder="Enter your Address here"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username" class="cols-sm-2 control-label">Username</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cUsername"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="username" id="username" autocomplete="OFF"  placeholder="Enter your Username here "/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="cols-sm-2 control-label">Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cPassword"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password here"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="cConfirm"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password here"/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button" name="btnRegister"> Register </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="validationDefault03">City</label>
-                    <input type="text" class="form-control" id="validationDefault03" required>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationDefault04">State</label>
-                    <select class="custom-select" id="validationDefault04" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="validationDefault05">Zip</label>
-                    <input type="text" class="form-control" id="validationDefault05" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                    <label class="form-check-label" for="invalidCheck2">
-                        Agree to terms and conditions
-                    </label>
-                </div>
-            </div>
-            <button class="btn btn-primary" type="submit">Submit form</button>
-        </form>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        </div>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

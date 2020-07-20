@@ -5,8 +5,11 @@
  */
 package com.Node.Controller;
 
+import com.Node.DAO.CustomerDAO;
+import com.Node.Entity.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -71,8 +74,24 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-       
-        
+        Customer c = new Customer();
+        c.setcName(request.getParameter("name"));
+        c.setcAddress(request.getParameter("address"));
+        Date birthday = Date.valueOf(request.getParameter("dob"));
+
+        c.setcDob(birthday);
+        String gender = request.getParameter("gender");
+        c.setcGender(Integer.parseInt(gender));
+        c.setcPhone(request.getParameter("phone"));
+        c.setcEmail(request.getParameter("email"));
+        c.setPassword(request.getParameter("password"));
+        c.setUser(request.getParameter("username"));
+
+        CustomerDAO cDAO = new CustomerDAO();
+        if (request.getParameter("btnRegister") != null) {
+            cDAO.insertCustomer(c);
+        }
+        response.sendRedirect("views/homepage.jsp");
     }
 
     /**

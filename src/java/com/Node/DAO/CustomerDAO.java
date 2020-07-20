@@ -28,10 +28,7 @@ public class CustomerDAO {
     public int insertCustomer(Customer c) {
 
         try {
-            String sql = "INSERT INTO `customer`"
-                    + "(`cName`, `cUser`, `cPass`, `cDob`, `cAdrress`, `cPhone`, `cEmail`, `cGender`, `cDescription`, `cStatus`)"
-                    + " VALUES (? , ? , MD5(?) , ? , ? , ? , ? , ? , ? , ?)";
-
+            String sql = "INSERT INTO `customer`(`cName`, `cUser`, `cPass`, `cDob`, `cAddress`, `cPhone`, `cEmail`, `cGender`, `cDescription`, `cStatus`) VALUES (? , ? , MD5(?) , ? , ? , ? , ? , ? , ? , ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
 
             pst.setString(1, c.getcName());
