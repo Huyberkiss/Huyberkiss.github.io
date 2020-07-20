@@ -87,10 +87,13 @@
                     <p><b>Color: </b>${product.color}</p>
                     <p><b>Length: </b>${product.length}</p>
                     <p><b>Description: </b>${product.description}</p>
-                    <input placeholder="Enter a number" required type="number" value="" min="-100" max="100"/>
-                    <div class="d-flex justify-content-center">
-                        <button type="button" class="btn  btn-dark btn-lg" onclick="window.location.href = '../ShoppingCartController'">Order now</button>
-                    </div>
+                    <form action="${pageContext.request.contextPath}/ShoppingCartController">
+                        <input type="hidden" value="${product.id}" name="id"/>
+                        <p><b>Enter quantity: </b> <input style="margin-left: 20px" name="quantity" placeholder="number" required type="number" value="0" min="0" max="100"/>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn  btn-dark btn-lg">Order now</button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
