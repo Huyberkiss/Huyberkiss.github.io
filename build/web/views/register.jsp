@@ -137,7 +137,71 @@
                 </div>
             </div>
         </div>
-        
+        <script type="text/javascript">
+            function validation() {
+                var name = document.getElementById('name').value;
+                var dob = document.getElementById('dob').value;
+                var gender = document.getElementById('gender').value;
+                var phone = document.getElementById('phone').value;
+                var email = document.getElementById('email').value;
+                var address = document.getElementById('address').value;
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                var confirm = document.getElementById('confirm').value;
+
+
+                if (name === "") {
+                    document.getElementById('cName').innerHTML = "PLEASE ENTER YOUR NAME!";
+                    return false;
+                }
+                if (dob === "") {
+                    document.getElementById('cDob').innerHTML = "PLEASE ENTER YOUR DATE OF BIRTH!";
+                    return false;
+                }
+                if (gender === "") {
+                    document.getElementById('cGender').innerHTML = "PLEASE CHOOSE YOUR GENDER!";
+                    return false;
+                }
+                if (phone === "") {
+                    document.getElementById('cPhone').innerHTML = "PLEASE ENTER YOUR PHONE!";
+                    return false;
+                }
+                if ((phone.length > 11) || (phone.length < 10)) {
+                    document.getElementById('cPhone').innerHTML = "INVALID PHONE NUMBER! PLEASE TRY AGAIN!";
+                    return false;
+                }
+
+                if (isNaN(phone)) {
+                    document.getElementById('cPhone').innerHTML = "PLEASE ENTER DIGIT NUMBERS, NOT CHARACTERS!";
+                    return false;
+                }
+                if (email === "") {
+                    document.getElementById('cEmail').innerHTML = "PLEASE ENTER YOUR EMAIL!";
+                    return false;
+                }
+                if ((email.indexOf('@') === -1) || email.indexOf('.') === -1) {
+                    document.getElementById('cEmail').innerHTML = "INVALID EMAIL, PLEASE ENTER AGAIN!";
+                    return false;
+                }
+                if (address === "") {
+                    document.getElementById('cAddress').innerHTML = "PLEASE ENTER YOUR ADDRESS!";
+                    return false;
+                }
+                if (username === "") {
+                    document.getElementById('cUsername').innerHTML = "PLEASE ENTER YOUR USERNAME!";
+                    return false;
+                }
+                if (password === "") {
+                    document.getElementById('cPassword').innerHTML = "PLEASE ENTER YOUR PASSWORD!";
+                    return false;
+                }
+                if (confirm !== password) {
+                    document.getElementById('cConfirm').innerHTML = "PASSWORD AND CONFIRM PASSWORD ARE NOT MATCHING! PLEASE TRY AGAIN!";
+                    return false;
+                }
+            }
+        </script>
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

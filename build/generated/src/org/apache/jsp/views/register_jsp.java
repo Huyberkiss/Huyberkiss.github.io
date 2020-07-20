@@ -1,0 +1,308 @@
+package org.apache.jsp.views;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+
+public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants.add("/css/register.css");
+  }
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n");
+      out.write("<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\"></script>\n");
+      out.write("<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>\n");
+      out.write("<!------ Include the above in your HEAD tag ---------->\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html lang=\"en\">\n");
+      out.write("    <head> \n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        <!-- Website CSS style -->\n");
+      out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\n");
+      out.write("\n");
+      out.write("        <!-- Website Font style -->\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"style.css\">\n");
+      out.write("        <!-- Google Fonts -->\n");
+      out.write("        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>\n");
+      out.write("        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>\n");
+      out.write("\n");
+      out.write("        <title>Register</title>\n");
+      out.write("        <style>\n");
+      out.write("            ");
+      out.write("/*\n");
+      out.write("To change this license header, choose License Headers in Project Properties.\n");
+      out.write("To change this template file, choose Tools | Templates\n");
+      out.write("and open the template in the editor.\n");
+      out.write("*/\n");
+      out.write("/* \n");
+      out.write("    Created on : Jul 20, 2020, 11:55:25 PM\n");
+      out.write("    Author     : Admin\n");
+      out.write("*/\n");
+      out.write("\n");
+      out.write("\n");
+      out.write(".form-container{\n");
+      out.write("    border: 1px solid black;\n");
+      out.write("    padding: 20px 30px;\n");
+      out.write("    margin-top: 20vh;\n");
+      out.write("    box-shadow: -1px 4px 25px 10px rgba(0,0,0,0.7);\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write("body{\n");
+      out.write("    background: url('../img/bgrrgt.jpg') no-repeat;\n");
+      out.write("    background-size: cover;\n");
+      out.write("    background-position: center;\n");
+      out.write("    height: 100vh;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write("\n");
+      out.write(".control-text {\n");
+      out.write("    font-size: 18px;\n");
+      out.write("    margin-left: 23vh;\n");
+      out.write("    margin-top: 2vh;\n");
+      out.write("    margin-bottom: 2vh;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write(".btn-control{\n");
+      out.write("    margin-top: 10px;\n");
+      out.write("    margin-left: 25vh;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("        </style>\n");
+      out.write("    </head>\n");
+      out.write("\n");
+      out.write("    <body>\n");
+      out.write("        <div class=\"container\">\n");
+      out.write("            <div class=\"row main\">\n");
+      out.write("                <div class=\"main-login main-center\">\n");
+      out.write("                    <form method=\"post\" action=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/RegisterController\" onsubmit=\"return validation()\">\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"name\" class=\"cols-sm-2 control-label\">Your Name</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cName\"><i class=\"fa fa-user fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"name\" id=\"name\" autocomplete=\"OFF\"  placeholder=\"Enter your Name here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"dob\" class=\"cols-sm-2 control-label\">Your Birthday</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cDob\"><i class=\"fa fa-gift fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"date\" class=\"form-control\" name=\"dob\" id=\"dob\" autocomplete=\"OFF\"  placeholder=\"Enter your Birthday here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"phone\" class=\"cols-sm-2 control-label\">Your Phone</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cPhone\"><i class=\"fa fa-phone fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"phone\" id=\"phone\" autocomplete=\"OFF\"  placeholder=\"Enter your Phone here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"gender\" class=\"cols-sm-2 control-label\">Your Gender</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\"> \n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cGender\"><i class=\"fa fa-user fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <select id=\"gender\" name=\"gender\" class=\"form-control\" autocomplete=\"OFF\">\n");
+      out.write("                                        <option value=\"0\">Male</option>\n");
+      out.write("                                        <option value=\"1\">Female</option>\n");
+      out.write("                                    </select>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"email\" class=\"cols-sm-2 control-label\">Your Email</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cEmail\"><i class=\"fa fa-envelope fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"email\" id=\"email\" autocomplete=\"OFF\" placeholder=\"Enter your Email here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"address\" class=\"cols-sm-2 control-label\">Your Address</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cAddress\"><i class=\"fa fa-map fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"address\" id=\"address\"autocomplete=\"OFF\"  placeholder=\"Enter your Address here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"username\" class=\"cols-sm-2 control-label\">Username</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cUsername\"><i class=\"fa fa-users fa\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"username\" id=\"username\" autocomplete=\"OFF\"  placeholder=\"Enter your Username here \"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"password\" class=\"cols-sm-2 control-label\">Password</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cPassword\"><i class=\"fa fa-lock fa-lg\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"password\" class=\"form-control\" name=\"password\" id=\"password\"  placeholder=\"Enter your Password here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <label for=\"confirm\" class=\"cols-sm-2 control-label\">Confirm Password</label>\n");
+      out.write("                            <div class=\"cols-sm-10\">\n");
+      out.write("                                <div class=\"input-group\">\n");
+      out.write("                                    <span class=\"input-group-addon\" id=\"cConfirm\"><i class=\"fa fa-lock fa-lg\" aria-hidden=\"true\"></i></span>\n");
+      out.write("                                    <input type=\"password\" class=\"form-control\" name=\"confirm\" id=\"confirm\"  placeholder=\"Confirm your Password here\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        <div class=\"form-group \">\n");
+      out.write("                            <button type=\"submit\" class=\"btn btn-primary btn-lg btn-block login-button\" name=\"btnRegister\"> Register </button>\n");
+      out.write("                        </div>\n");
+      out.write("                    </form>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("                    <script type=\"text/javascript\">\n");
+      out.write("            function validation() {\n");
+      out.write("                var name = document.getElementById('name').value;\n");
+      out.write("                var dob = document.getElementById('dob').value;\n");
+      out.write("                var gender = document.getElementById('gender').value;\n");
+      out.write("                var phone = document.getElementById('phone').value;\n");
+      out.write("                var email = document.getElementById('email').value;\n");
+      out.write("                var address = document.getElementById('address').value;\n");
+      out.write("                var username = document.getElementById('username').value;\n");
+      out.write("                var password = document.getElementById('password').value;\n");
+      out.write("                var confirm = document.getElementById('confirm').value;\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                if (name === \"\") {\n");
+      out.write("                    document.getElementById('cName').innerHTML = \"PLEASE ENTER YOUR NAME!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (dob === \"\") {\n");
+      out.write("                    document.getElementById('cDob').innerHTML = \"PLEASE ENTER YOUR DATE OF BIRTH!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (gender === \"\") {\n");
+      out.write("                    document.getElementById('cGender').innerHTML = \"PLEASE CHOOSE YOUR GENDER!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (phone === \"\") {\n");
+      out.write("                    document.getElementById('cPhone').innerHTML = \"PLEASE ENTER YOUR PHONE!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if ((phone.charAt(0) !== 0) || (phone.length >11) || phone.length < 10) {\n");
+      out.write("                    document.getElementById('cPhone').innerHTML = \"INVALID PHONE NUMBER! PLEASE TRY AGAIN!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("\n");
+      out.write("                if (isNaN(phone)) {\n");
+      out.write("                    document.getElementById('cPhone').innerHTML = \"PLEASE ENTER DIGIT NUMBERS, NOT CHARACTERS!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (email === \"\") {\n");
+      out.write("                    document.getElementById('cEmail').innerHTML = \"PLEASE ENTER YOUR EMAIL!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if ((email.indexOf('@') === -1) || email.indexOf('.') === -1) {\n");
+      out.write("                    document.getElementById('cEmail').innerHTML = \"INVALID EMAIL, PLEASE ENTER AGAIN!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (address === \"\") {\n");
+      out.write("                    document.getElementById('cAddress').innerHTML = \"PLEASE ENTER YOUR ADDRESS!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (username === \"\") {\n");
+      out.write("                    document.getElementById('cUsername').innerHTML = \"PLEASE ENTER YOUR USERNAME!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (password === \"\") {\n");
+      out.write("                    document.getElementById('cPassword').innerHTML = \"PLEASE ENTER YOUR PASSWORD!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("                if (confirm !== password) {\n");
+      out.write("                    document.getElementById('cConfirm').innerHTML = \"PASSWORD AND CONFIRM PASSWORD ARE NOT MATCHING! PLEASE TRY AGAIN!\";\n");
+      out.write("                    return false;\n");
+      out.write("                }\n");
+      out.write("            }\n");
+      out.write("        </script>\n");
+      out.write("        \n");
+      out.write("        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n");
+      out.write("        <!-- Include all compiled plugins (below), or include individual files as needed -->\n");
+      out.write("        <script src=\"js/bootstrap.min.js\"></script>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}
