@@ -89,7 +89,7 @@
                     <p><b>Description: </b>${product.description}</p>
                     <form action="${pageContext.request.contextPath}/ShoppingCartController">
                         <input type="hidden" value="${product.id}" name="id"/>
-                        <p><b>Enter quantity: </b> <input style="margin-left: 20px" name="quantity" placeholder="number" required type="number" value="0" min="0" max="100"/>
+                        <p><b>Enter quantity: </b> <input style="margin-left: 20px" name="quantity" placeholder="number" required type="number" value="1" min="1" max="100"/>
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn  btn-dark btn-lg">Order now</button>
                         </div>

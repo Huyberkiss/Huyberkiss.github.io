@@ -52,12 +52,12 @@ public class ShoppingCartController extends HttpServlet {
             throws ServletException, IOException {
       
         int pID = Integer.parseInt(request.getParameter("id"));
-        
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
         Product p = new ProductDAO().getProduct(pID);
         
         HashMap<Product,Integer> hmShoppingCart = new HashMap<>();
         
-        hmShoppingCart.put(p, hmShoppingCart.containsKey(p) ? hmShoppingCart.put(p, hmShoppingCart.get(p) + 1) : 1);
+        hmShoppingCart.put(p, hmShoppingCart.containsKey(p) ? hmShoppingCart.get(p) + quantity : quantity);
         
         request.getSession().setAttribute("mapShoppingCart", hmShoppingCart);
         
