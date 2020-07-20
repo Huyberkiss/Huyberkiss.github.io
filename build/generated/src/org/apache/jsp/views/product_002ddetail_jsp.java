@@ -162,7 +162,7 @@ public final class product_002ddetail_jsp extends org.apache.jasper.runtime.Http
       out.write("                        <input type=\"hidden\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\" name=\"id\"/>\r\n");
-      out.write("                        <p><b>Enter quantity: </b> <input style=\"margin-left: 20px\" name=\"quantity\" placeholder=\"number\" required type=\"number\" value=\"0\" min=\"0\" max=\"100\"/>\r\n");
+      out.write("                        <p><b>Enter quantity: </b> <input style=\"margin-left: 20px\" name=\"quantity\" placeholder=\"number\" required type=\"number\" value=\"1\" min=\"1\" max=\"100\"/>\r\n");
       out.write("                        <div class=\"d-flex justify-content-center\">\r\n");
       out.write("                            <button type=\"submit\" class=\"btn  btn-dark btn-lg\">Order now</button>\r\n");
       out.write("                        </div>\r\n");

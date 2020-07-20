@@ -20,6 +20,10 @@
         <servlet-name>ProductDetailController</servlet-name>
         <servlet-class>com.Node.Controller.ProductDetailController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShoppingCartDeleteController</servlet-name>
+        <servlet-class>com.Node.Controller.ShoppingCartDeleteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>ProductDetailController</servlet-name>
         <url-pattern>/ProductDetailController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShoppingCartDeleteController</servlet-name>
+        <url-pattern>/ShoppingCartDeleteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

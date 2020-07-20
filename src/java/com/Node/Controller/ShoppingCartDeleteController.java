@@ -5,14 +5,10 @@
  */
 package com.Node.Controller;
 
-import com.Node.DAO.ProductDAO;
-import com.Node.Entity.Product;
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "ShoppingCartController", urlPatterns = {"/ShoppingCartController"})
-public class ShoppingCartController extends HttpServlet {
+public class ShoppingCartDeleteController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +30,19 @@ public class ShoppingCartController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ShoppingCartDeleteController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ShoppingCartDeleteController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,30 +57,14 @@ public class ShoppingCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int pID = Integer.parseInt(request.getParameter("id"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-        Product p = new ProductDAO().getProduct(pID);
-
-        HashMap<Integer, Integer> hmShoppingCart;
-
-        if (request.getSession().getAttribute("mapShoppingCart") != null) {
-            hmShoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("mapShoppingCart");
-
-            hmShoppingCart.put(pID, hmShoppingCart.containsKey(pID) ? hmShoppingCart.get(pID) + quantity : quantity);
-        } else {
-            hmShoppingCart = new HashMap<>();
-            hmShoppingCart.put(pID, quantity);
+       
+        if(request.getParameter("delete") != null){
+            int del = Integer.parseInt(request.getParameter("delete"));
+            HashMap<Integer , Integer> hm = (HashMap<Integer , Integer>) request.getSession().getAttribute("mapShoppingCart");
+            hm.remove(del);
         }
         
-        for(Map.Entry m : hmShoppingCart.entrySet()){
-            response.getWriter().println(m.getValue() + "  "+ m.getKey());
-        }
-        
-        request.getSession().setAttribute("mapShoppingCart", hmShoppingCart);
-
-         request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
     }
 
     /**

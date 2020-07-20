@@ -4,6 +4,10 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.Entity.Product"%>
+<%@page import="com.Node.DAO.ProductDAO"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -32,6 +36,7 @@
         </style>
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="px-4 px-lg-0">
             <!-- For demo purpose -->
             <div class="container text-white py-5 text-center">
@@ -41,6 +46,7 @@
             </div>
             <!-- End -->
 
+            
             <div class="pb-5">
                 <div class="container">
                     <div class="row">
@@ -66,23 +72,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="product" items="${mapShoppingCart}" >
-                                            <tr>
-                                               ${product.value}
-                                                <th scope="row" >
-                                                    <div class="p-2">
-                                                        <img src="${pageContext.request.contextPath}/img/${product.key.imgID}.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                                        <div class="ml-3 d-inline-block align-middle">
-                                                            <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">Timex Unisex Originals</a></h5><span class="text-muted font-weight-normal font-italic d-block">Category: Watches</span>
-                                                        </div>
-                                                    </div>
-                                                </th>
+                                        <% 
+                                            
+                                            float total = 0;
+                                            if(request.getSession().getAttribute("mapShoppingCart") != null){
+                                                HashMap<Integer , Integer> hm = (HashMap<Integer, Integer>) request.getSession().getAttribute("mapShoppingCart");
+                                                
+                                                for(Map.Entry<Integer , Integer > m : hm.entrySet()){
+                                                    Product p = new ProductDAO().getProduct(m.getKey());
+                                                    
+                                                    out.println("<tr>");
+                                                    out.println(" <th scope=\"row\" >");
+                                                    out.print("<div class=\"p-2\">");
+                                                    out.print("<img src=\"" + "/ProjectPRJ/img/" + p.getImgID()+".jpg" + " \"  width=\"70\" class=\"img-fluid rounded shadow-sm\">");
+                                                    out.print("<div class=\"ml-3 d-inline-block align-middle\">");
+                                                    out.print("<h5 class=\"mb-0\"> <a href=\"#\" class=\"text-dark d-inline-block align-middle\">"+ p.getName() + "</a></h5>");
+                                                    out.print("<span class=\"text-muted font-weight-normal font-italic d-block\">Category: "+p.getCategory()+"</span>");
+                                                    out.print(" </div>");
+                                                    out.print("</div>");
+                                                    out.print("</th>");
+                                                    out.print("  <td class=\"border-0 align-middle\"><strong>$"+ p.getPrice() * m.getValue() + " </strong></td>");
+                                                    out.print("  <td class=\"border-0 align-middle\"><strong>"+m.getValue()+"</strong></td>");
+                                                    out.print("<td class=\"border-0 align-middle\"><a href=\"/ProjectPRJ/ShoppingCartDeleteController?delete="+p.getId()+"\" class=\"text-dark\"><i class=\"fa fa-trash\"></i></a></td>");
+                                                    out.print("</tr>");
+                                                    total += p.getPrice() * m.getValue();
+                                                }
+                                                
                                                
-                                                <td class="border-0 align-middle"><strong>$${product.key.price }</strong></td>
-                                                <td class="border-0 align-middle"><strong>${product.value}</strong></td>
-                                                <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                                            </tr>
-                                        </c:forEach>
+                                                
+                                            }
+                                        %>
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -110,11 +130,11 @@
                             <div class="p-4">
                                 <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
                                 <ul class="list-unstyled mb-4">
-                                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
+                                    <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$<%= total %></strong></li>
                                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
                                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>$0.00</strong></li>
                                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
-                                        <h5 class="font-weight-bold">$400.00</h5>
+                                        <h5 class="font-weight-bold">$<%= total + 10 %></h5>
                                     </li>
                                 </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                             </div>

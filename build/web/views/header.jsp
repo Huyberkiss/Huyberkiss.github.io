@@ -54,17 +54,17 @@
 
 
                         <c:if test="${empty id}">
-                            <li class="nav-item btn btn-outline-secondary btn-sm"><a href="../views/login.jsp" class="nav-link">
+                            <li class="nav-item btn btn-outline-secondary btn-sm"><a href="${pageContext.request.contextPath}/views/login.jsp" class="nav-link">
                                     Login
                                 </a>
                             </li> 
                         </c:if>
                         <c:if test="${not empty id}">
 
-                            <li class="nav-item"><a href="#" class="nav-link"> <i
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/views/shopping-cart.jsp" class="nav-link"> <i
                                         class="fa fa-shopping-cart fa-2x"></i>
                                 </a></li>
-                            <li class="nav-item"><a href="#" class="nav-link"> 
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/views/profileUser.jsp" class="nav-link"> 
                                     <i
                                         class="fa fa-user-o fa-2x"></i>
                                 </a></li>
