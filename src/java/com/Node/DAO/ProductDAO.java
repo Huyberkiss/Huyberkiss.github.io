@@ -54,6 +54,56 @@ public class ProductDAO {
         return null;
 
     }
+    
+    public ArrayList<Product> sortProductAlphaBet(String msg) {
+
+        try {
+            String sql = "SELECT * FROM `product` ORDER BY `product`.`pName` "+msg;
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                listProduct.add(new Product(rs.getInt("pId"), rs.getString("pName"), rs.getFloat("pSalePrice"),
+                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getString("pQuantity"),
+                        rs.getString("color"), rs.getString("length"), rs.getString("pDescription"), rs.getInt("pStatusId"), rs.getString("pImageID")));
+            }
+
+            return listProduct;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
+    
+    public ArrayList<Product> sortProductPrice(String msg) {
+
+        try {
+            String sql = "SELECT * FROM `product` ORDER BY `product`.`pSalePrice` "+msg;
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                listProduct.add(new Product(rs.getInt("pId"), rs.getString("pName"), rs.getFloat("pSalePrice"),
+                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getString("pQuantity"),
+                        rs.getString("color"), rs.getString("length"), rs.getString("pDescription"), rs.getInt("pStatusId"), rs.getString("pImageID")));
+            }
+
+            return listProduct;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
 
     public Product getProduct(int id) {
 

@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ProductController extends HttpServlet {
 
+    ArrayList<Product> listProduct;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,7 +40,7 @@ public class ProductController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductController</title>");            
+            out.println("<title>Servlet ProductController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ProductController at " + request.getContextPath() + "</h1>");
@@ -59,14 +61,40 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            ArrayList<Product> listProduct = new ProductDAO().getAll();
-            
-            request.setAttribute("listProduct", listProduct);
-        
-            request.getRequestDispatcher("views/product.jsp").forward(request, response);
-            
-            
+
+        listProduct = new ProductDAO().getAll();
+
+        if (request.getParameter("search") != null) {
+            includesProduct(request, response);
+        } else if (request.getParameter("sort") != null) {
+            sortAlphabet(request, response, request.getParameter("sort"));
+        } else if (request.getParameter("price") != null) {
+            sortPrice(request, response, request.getParameter("price"));
+        }
+
+        request.setAttribute("listProduct", listProduct);
+
+        request.getRequestDispatcher("views/product.jsp").forward(request, response);
+
+    }
+
+    private void includesProduct(HttpServletRequest request, HttpServletResponse response) {
+        ArrayList<Product> temp = new ArrayList<>();
+        String search = request.getParameter("search");
+        for (Product i : listProduct) {
+            if (i.getName().toLowerCase().contains(search.toLowerCase())) {
+                temp.add(i);
+            }
+        }
+        listProduct = temp;
+    }
+
+    private void sortAlphabet(HttpServletRequest request, HttpServletResponse response, String msg) {
+        listProduct = new ProductDAO().sortProductAlphaBet(msg);
+    }
+
+    private void sortPrice(HttpServletRequest request, HttpServletResponse response, String msg) {
+        listProduct = new ProductDAO().sortProductPrice(msg);
     }
 
     /**

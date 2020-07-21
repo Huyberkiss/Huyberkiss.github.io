@@ -97,8 +97,8 @@
             <div class="row ">
                 <div class=" col-md-3 filter">
                     <h3 class="filter-name">Filter Product</h3>
-                    <form class="form my-2 my-lg-0 ">
-                        <input class="form-control mr-sm-2 mb-2 " size="10" type="search" placeholder="Search" aria-label="Search">
+                    <form action="${pageContext.request.contextPath}/ProductController" class="form my-2 my-lg-0 ">
+                        <input class="form-control mr-sm-2 mb-2 " size="10" type="search" placeholder="Search" name="search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0 "  type="submit">Search</button>
                     </form>
                     <div style="padding-top: 10px" class="btn-group dropright">
@@ -106,10 +106,16 @@
                            Sort by:
                         </button>
                         <div class="dropdown-menu">
-                           <button class="dropdown-item "  type="button">A-Z</button>
-                            <button class="dropdown-item "  type="button">Z-A</button>
-                             <button class="dropdown-item "  type="button">Highest Money</button>
-                              <button class="dropdown-item "  type="button">Lowest Money</button>
+                            <button class="dropdown-item" onclick="window.location.href='${pageContext.request.contextPath}/ProductController'"
+                                    type="button">Default</button>
+                           <button class="dropdown-item "  type="button" onclick="window.location.href='${pageContext.request.contextPath}/ProductController?sort=ASC'" 
+                                   >Sort Alphabet A-Z</button>
+                            <button class="dropdown-item "  type="button" onclick="window.location.href='${pageContext.request.contextPath}/ProductController?sort=DESC'"
+                                    >Sort Alphabet Z-A</button>
+                             <button class="dropdown-item "  type="button" onclick="window.location.href='${pageContext.request.contextPath}/ProductController?price=DESC'"
+                                     >Highest Money</button>
+                              <button class="dropdown-item "  type="button" onclick="window.location.href='${pageContext.request.contextPath}/ProductController?price=ASC'"
+                                      >Lowest Money</button>
                         </div>
                     </div>
                 </div>
