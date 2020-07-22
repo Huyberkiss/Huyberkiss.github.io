@@ -20,3 +20,11 @@ body{
 .bg-black{
 	background: #000;
 }
+
+.num-cart{
+    padding-bottom: 3%;
+    color: #ef629f;
+    padding-bottom:  5px;
+    padding-left: 5px;
+    font-size: 15px;
+}

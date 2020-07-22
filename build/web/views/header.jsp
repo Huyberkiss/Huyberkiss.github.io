@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.HashMap"%>
 <%@page import="com.Node.DAO.CustomerDAO"%>
 <%@page import="com.Node.Entity.Customer"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -61,14 +62,16 @@
                         </c:if>
                         <c:if test="${not empty id}">
 
+                           
+                            
                             <li class="nav-item"><a href="${pageContext.request.contextPath}/views/shopping-cart.jsp" class="nav-link"> <i
-                                        class="fa fa-shopping-cart fa-2x"></i>
+                                        class="fa fa-shopping-cart fa-2x"><span class="num-cart">[<%= hm.size() %>]</span></i>
                                 </a></li>
                             <li class="nav-item"><a href="${pageContext.request.contextPath}/views/profileUser.jsp" class="nav-link"> 
                                     <i
                                         class="fa fa-user-o fa-2x"></i>
                                 </a></li>
-                            <li class="nav-item text-center text-secondary">Hello , <%= lastName%><a href="../logoutController" class="nav-link">Logout</a></li>
+                            <li class="nav-item text-center text-secondary">Hello , <%= lastName%><a href="${pageContext.request.contextPath}/logoutController" class="nav-link">Logout</a></li>
                             </c:if>
 
 
