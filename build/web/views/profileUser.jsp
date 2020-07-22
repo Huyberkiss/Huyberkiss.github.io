@@ -23,7 +23,7 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="./src/bootstrap-input-spinner.js"></script>
+      
         <title>JSP Page</title>
         <style>
             body{
@@ -31,7 +31,7 @@
             }
             .emp-profile{
                 padding: 3%;
-                margin-top: 3%;
+                margin-top: 8%;
                 margin-bottom: 3%;
                 border-radius: 0.5rem;
                 background: #fff;
@@ -98,6 +98,19 @@
                 font-weight: 600;
                 color: #0062cc;
             }
+            
+            .btn-group{
+                margin : 20px 0 ;
+                margin-left: 20%;
+                border: none;
+                border-radius: 1.5rem;
+                width: 58%;
+                font-weight: 600;
+                color: #eee;
+                cursor: pointer;
+                font-size: 15px;
+            }
+            
         </style>
     </head>
     <body>
@@ -117,6 +130,8 @@
 
         %>
 
+        <jsp:include page="header.jsp"/>
+        
         <div class="container emp-profile">
             <form method="post">
                 <div class="row">
@@ -145,7 +160,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-
+                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href='historybill.jsp'">Transaction history</button>
+                          <button class="btn btn-dark px-4 rounded-pill btn-group">Change Password</button>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -178,7 +194,7 @@
                                         <label>Date of birth: </label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${customer.cDob}</p>
+                                        <p><%= new SimpleDateFormat("dd-MM-yyyy").format(c.getcDob()) %></p>
                                     </div>
                                 </div>
                                 <div class="row">
