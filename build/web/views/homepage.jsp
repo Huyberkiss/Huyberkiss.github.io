@@ -19,15 +19,13 @@
         </style>
     <body>
         <jsp:include page="header.jsp" />
-        
-        <% 
-            if(request.getAttribute("isBought") != null){
-                if(Integer.parseInt(request.getAttribute("isBought").toString()) == 0){
-                    out.print("<script> alert('You ordered successfull , back to homepage') </script>");
-                }
+
+        <%
+            if (Integer.parseInt(request.getAttribute("isBought").toString()) == 0) {
+                out.print("<script> alert('You ordered successfull , back to homepage') </script>");
+
             }
         %>
-        
         <section class="main">
             <div class="container">
                 <div id="carouselExampleIndicators" class="carousel slide"
@@ -186,9 +184,9 @@
                 </div>
             </div>
         </section>
-                            
-                            
-                            
+
+
+
         <section class="testimontials">
             <div class="container inner ">
                 <h1 class="text-center font-weight-bold " style="text-transform: uppercase"> Somes review about company</h1>

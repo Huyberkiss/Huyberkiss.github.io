@@ -76,6 +76,7 @@ public class PayProductController extends HttpServlet {
                 Product p = new ProductDAO().getProduct(m.getKey());
                 if (m.getValue() > p.getQuantity()) {
                     request.setAttribute("isBought", 1);
+                      request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
                     checkSP = false;
                 }
             }
@@ -101,6 +102,7 @@ public class PayProductController extends HttpServlet {
 
         } else {
             request.setAttribute("isBought", 2);
+              request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
         }
         
         request.getRequestDispatcher("/views/homepage.jsp").forward(request, response);

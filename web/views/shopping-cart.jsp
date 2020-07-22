@@ -105,7 +105,10 @@
                                                     out.print("<script> alert('your quantity you buy is greater than quantity in shop , sorry ')  </script>");
                                                 } else if (Integer.parseInt(request.getAttribute("isBought").toString()) == 2) {
                                                     out.print("<script> alert('your Cart is Empty')  </script>");
-                                                } 
+                                                } else if (Integer.parseInt(request.getAttribute("isBought").toString()) == 0) {
+                                                    out.print("<script> alert('You ordered successfull , back to homepage') </script>");
+                                                    response.sendRedirect("/ProjectPRJ/views/homepage.jsp");
+                                                }
                                             }
                                         %>
 
