@@ -23,7 +23,7 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      
+
         <title>JSP Page</title>
         <style>
             body{
@@ -98,7 +98,7 @@
                 font-weight: 600;
                 color: #0062cc;
             }
-            
+
             .btn-group{
                 margin : 20px 0 ;
                 margin-left: 20%;
@@ -110,7 +110,7 @@
                 cursor: pointer;
                 font-size: 15px;
             }
-            
+
         </style>
     </head>
     <body>
@@ -122,16 +122,16 @@
                 int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
                 c = new CustomerDAO().getCustomer(id);
             }
-            
-          String hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0 , 7),"********");
-             pageContext.setAttribute("hiddenPhone", hiddenPhone);
+
+            String hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0, 7), "********");
+            pageContext.setAttribute("hiddenPhone", hiddenPhone);
             pageContext.setAttribute("customer", c);
 
 
         %>
 
         <jsp:include page="header.jsp"/>
-        
+
         <div class="container emp-profile">
             <form method="post">
                 <div class="row">
@@ -160,8 +160,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href='historybill.jsp'">Transaction history</button>
-                          <button class="btn btn-dark px-4 rounded-pill btn-group">Change Password</button>
+                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'historybill.jsp'">Transaction history</button>
+                        <button class="btn btn-dark px-4 rounded-pill btn-group">Change Password</button>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -194,7 +194,7 @@
                                         <label>Date of birth: </label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><%= new SimpleDateFormat("dd-MM-yyyy").format(c.getcDob()) %></p>
+                                        <p><%= new SimpleDateFormat("dd-MM-yyyy").format(c.getcDob())%></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -219,6 +219,14 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p>${customer.cDescription}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Address:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>${customer.cAddress}</p>
                                     </div>
                                 </div>
                             </div>

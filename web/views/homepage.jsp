@@ -19,6 +19,15 @@
         </style>
     <body>
         <jsp:include page="header.jsp" />
+        
+        <% 
+            if(request.getAttribute("isBought") != null){
+                if(Integer.parseInt(request.getAttribute("isBought").toString()) == 0){
+                    out.print("<script> alert('You ordered successfull , back to homepage') </script>");
+                }
+            }
+        %>
+        
         <section class="main">
             <div class="container">
                 <div id="carouselExampleIndicators" class="carousel slide"

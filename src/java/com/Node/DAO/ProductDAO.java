@@ -41,7 +41,7 @@ public class ProductDAO {
 
             while (rs.next()) {
                 listProduct.add(new Product(rs.getInt("pId"), rs.getString("pName"), rs.getFloat("pSalePrice"),
-                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getString("pQuantity"),
+                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getInt("pQuantity"),
                         rs.getString("color"), rs.getString("length"), rs.getString("pDescription"), rs.getInt("pStatusId"), rs.getString("pImageID")));
             }
 
@@ -66,7 +66,7 @@ public class ProductDAO {
 
             while (rs.next()) {
                 listProduct.add(new Product(rs.getInt("pId"), rs.getString("pName"), rs.getFloat("pSalePrice"),
-                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getString("pQuantity"),
+                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getInt("pQuantity"),
                         rs.getString("color"), rs.getString("length"), rs.getString("pDescription"), rs.getInt("pStatusId"), rs.getString("pImageID")));
             }
 
@@ -91,7 +91,7 @@ public class ProductDAO {
 
             while (rs.next()) {
                 listProduct.add(new Product(rs.getInt("pId"), rs.getString("pName"), rs.getFloat("pSalePrice"),
-                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getString("pQuantity"),
+                        rs.getString("pBrand"), rs.getString("pType"), rs.getString("pCategoryId"), rs.getInt("pQuantity"),
                         rs.getString("color"), rs.getString("length"), rs.getString("pDescription"), rs.getInt("pStatusId"), rs.getString("pImageID")));
             }
 
@@ -104,7 +104,50 @@ public class ProductDAO {
         return null;
 
     }
+    
+    public int getQuantityProduct(int id){
+        try {
+            String sql = "SELECT `pQuantity` FROM `product` WHERE `pId` = ?";
+            
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            pst.setInt(1, id);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt("pQuantity");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 0;
+    }
 
+    public int updateQuantityProduct(int quantity , int id){
+        try {
+            String sql = "UPDATE `product` SET `pQuantity` = ? WHERE `pId` = ?";
+            
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            int pQuantity = getQuantityProduct(id);
+            
+            if(pQuantity > 0 ){
+                pst.setInt(1, pQuantity - quantity );
+                pst.setInt(2, id);
+            }
+            
+            return pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            return 0;
+    }
+    
     public Product getProduct(int id) {
 
         try {
@@ -125,7 +168,7 @@ public class ProductDAO {
                 p.setBrand(rs.getString("pBrand"));
                 p.setType(rs.getString("pType"));
                 p.setCategory(rs.getString("pCategoryId"));
-                p.setQuantity(rs.getString("pQuantity"));
+                p.setQuantity(rs.getInt("pQuantity"));
                 p.setColor(rs.getString("color"));
                 p.setLength(rs.getString("length"));
                 p.setDescription(rs.getString("pDescription"));

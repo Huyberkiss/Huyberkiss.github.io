@@ -4,7 +4,13 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.DAO.ProductDAO"%>
+<%@page import="com.Node.DAO.CustomerDAO"%>
+<%@page import="com.Node.DAO.BillDAO"%>
+<%@page import="com.Node.Entity.Bill"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,7 +38,20 @@
                 <h1 class="display-4"> History</h1>
             </div>
 
+            <%
+                int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
+                ArrayList<Bill> listBill = new BillDAO().listBillByIdCustomer(id);
 
+                pageContext.setAttribute("listBill", listBill);
+
+                String name = new CustomerDAO().getCustomer(id).getcName();
+
+                String[] firstName = name.split(" ");
+
+                String onlyName = firstName[firstName.length - 1];
+                
+               // String productName = new ProductDAO().getProduct(id);
+            %>
 
             <div class="pb-5">
                 <div class="container">
@@ -53,24 +72,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    <c:forEach var="bill" items="${listBill}">
+                                        <tr>
+                                            <td><%= onlyName %></td>
+                                            <td>${bill}</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                    </c:forEach> 
+
                                 </tbody>
                             </table>
                         </div>

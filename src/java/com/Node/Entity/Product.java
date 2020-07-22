@@ -17,13 +17,13 @@ public class Product {
     private String brand;   
     private String type;
     private String category;
-    private String quantity;
+    private int quantity;
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
     private String color;
@@ -35,7 +35,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, float price, String brand, String type, String category, String quantity, String color, String length, String description, int status, String imgID) {
+    public Product(int id, String name, float price, String brand, String type, String category, int quantity, String color, String length, String description, int status, String imgID) {
         this.id = id;
         this.name = name;
         this.price = price;

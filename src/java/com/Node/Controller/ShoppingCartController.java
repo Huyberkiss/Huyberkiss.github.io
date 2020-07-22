@@ -51,29 +51,31 @@ public class ShoppingCartController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int pID = Integer.parseInt(request.getParameter("id"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        if (request.getSession().getAttribute("id") != null) {
+            int pID = Integer.parseInt(request.getParameter("id"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        Product p = new ProductDAO().getProduct(pID);
+            Product p = new ProductDAO().getProduct(pID);
 
-        HashMap<Integer, Integer> hmShoppingCart;
+            HashMap<Integer, Integer> hmShoppingCart;
 
-        if (request.getSession().getAttribute("mapShoppingCart") != null) {
-            hmShoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("mapShoppingCart");
+            if (request.getSession().getAttribute("mapShoppingCart") != null) {
+                hmShoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("mapShoppingCart");
 
-            hmShoppingCart.put(pID, hmShoppingCart.containsKey(pID) ? hmShoppingCart.get(pID) + quantity : quantity);
-        } else {
-            hmShoppingCart = new HashMap<>();
-            hmShoppingCart.put(pID, quantity);
+                hmShoppingCart.put(pID, hmShoppingCart.containsKey(pID) ? hmShoppingCart.get(pID) + quantity : quantity);
+            } else {
+                hmShoppingCart = new HashMap<>();
+                hmShoppingCart.put(pID, quantity);
+            }
+
+
+            request.getSession().setAttribute("mapShoppingCart", hmShoppingCart);
+
+            request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("/ProjectPRJ/views/login.jsp");
         }
-        
-        for(Map.Entry m : hmShoppingCart.entrySet()){
-            response.getWriter().println(m.getValue() + "  "+ m.getKey());
-        }
-        
-        request.getSession().setAttribute("mapShoppingCart", hmShoppingCart);
 
-         request.getRequestDispatcher("/views/shopping-cart.jsp").forward(request, response);
     }
 
     /**
