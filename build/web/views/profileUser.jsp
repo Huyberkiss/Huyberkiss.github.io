@@ -122,8 +122,13 @@
                 int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
                 c = new CustomerDAO().getCustomer(id);
             }
-
-            String hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0, 7), "********");
+             String hiddenPhone = null;
+            try{
+                  hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0, 7), "********");
+            }catch(Exception e){
+                hiddenPhone = c.getcPhone();
+            }
+           
             pageContext.setAttribute("hiddenPhone", hiddenPhone);
             pageContext.setAttribute("customer", c);
 

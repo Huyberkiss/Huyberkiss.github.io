@@ -21,9 +21,10 @@
         <jsp:include page="header.jsp" />
 
         <%
-            if (Integer.parseInt(request.getAttribute("isBought").toString()) == 0) {
-                out.print("<script> alert('You ordered successfull , back to homepage') </script>");
-
+            if (request.getAttribute("isBought") != null) {
+                if (Integer.parseInt(request.getAttribute("isBought").toString()) == 0) {
+                    out.print("<script> alert('You ordered successfull , back to homepage') </script>");
+                }
             }
         %>
         <section class="main">

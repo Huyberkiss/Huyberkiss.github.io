@@ -4,6 +4,8 @@
     Author     : Admin
 --%>
 
+<%@page import="com.Node.DAO.StatusBillDAO"%>
+<%@page import="com.Node.DAO.PaymentDAO"%>
 <%@page import="com.Node.DAO.ProductDAO"%>
 <%@page import="com.Node.DAO.CustomerDAO"%>
 <%@page import="com.Node.DAO.BillDAO"%>
@@ -29,35 +31,30 @@
         body{
             background: -webkit-linear-gradient(left, #3231af, #11e6ff);
         }
+        
+        .btn{
+            margin-bottom: 3%; 
+            margin-right: 20px;
+        }
     </style>
     <body>
+        
 
-
-        <div class="px-4 px-lg-0">
+        <div class="px-4 px-lg-0 container-fluid mt-5">
             <div class="container text-white py-5 text-center">
                 <h1 class="display-4"> History</h1>
             </div>
 
-            <%
-                int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
-                ArrayList<Bill> listBill = new BillDAO().listBillByIdCustomer(id);
-
-                pageContext.setAttribute("listBill", listBill);
-
-                String name = new CustomerDAO().getCustomer(id).getcName();
-
-                String[] firstName = name.split(" ");
-
-                String onlyName = firstName[firstName.length - 1];
-                
-               // String productName = new ProductDAO().getProduct(id);
-            %>
-
             <div class="pb-5">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
+                       
                         <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
-                            <table class="table table-striped">
+                            <button class="btn btn-outline-success" 
+                                    onclick="window.location.href='${pageContext.request.contextPath}/views/profileUser.jsp'">back To profile</button>
+                             <button class="btn btn-outline-primary"
+                                     onclick="window.location.href='${pageContext.request.contextPath}/views/billDetail.jsp'">see detail</button>
+                            <table class="table table-striped text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>
@@ -72,13 +69,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="bill" items="${listBill}">
-                                        <tr>
-                                            <td><%= onlyName %></td>
-                                            <td>${bill}</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                    </c:forEach> 
+
+                                    <%
+                                        int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
+                                        ArrayList<Bill> listBill = new BillDAO().listBillByIdCustomer(id);
+                                        String[] fullName = new CustomerDAO().getCustomer(id).getcName().split(" ");
+                                        
+                                        String firstName = fullName[fullName.length - 1];
+
+                                        
+                                        
+                                        for (Bill b : listBill) {
+                                            
+                                            String payment = new PaymentDAO().getStatusBillById(b.getPayId());
+                                            String statusBill = new StatusBillDAO().getStatusBillById(b.getSbId());
+                                            
+                                            out.print("<tr class=\"text-center\">");
+                                            out.println("<td>" + firstName + "</td>");
+                                            out.println("<td>" + new ProductDAO().getProduct(b.getpId()).getName() + "</td>");
+                                            out.println("<td>" + b.getAddress() + "</td>");
+                                            out.println("<td>" + b.getPhone() + "</td>");
+                                            out.println("<td>" + b.getProductPrice() + "</td>");
+                                            out.println("<td>" + b.getQuantity() + "</td>");
+                                            out.println("<td>" + b.getvId() + "</td>");
+                                            out.println("<td>" + payment + "</td>");
+                                            out.println("<td>" + statusBill + "</td>");
+                                            out.print("</tr>");
+
+                                        }
+
+
+                                    %>
+
+                                   
 
                                 </tbody>
                             </table>

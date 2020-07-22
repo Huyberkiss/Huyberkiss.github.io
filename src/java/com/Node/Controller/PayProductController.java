@@ -6,9 +6,11 @@
 package com.Node.Controller;
 
 import com.Node.DAO.BillDAO;
+import com.Node.DAO.BillDetailDAO;
 import com.Node.DAO.CustomerDAO;
 import com.Node.DAO.ProductDAO;
 import com.Node.Entity.Bill;
+import com.Node.Entity.BillDetail;
 import com.Node.Entity.Customer;
 import com.Node.Entity.Product;
 import java.io.IOException;
@@ -93,8 +95,15 @@ public class PayProductController extends HttpServlet {
                     b.setQuantity(m.getValue());
                     b.setvId(0);
                     b.setPayId(1);
-                    b.setSbId(0);
+                    b.setSbId(1);
                     new BillDAO().insertBill(b);
+                    BillDetail bd = new BillDetail();
+                    bd.setbId(new BillDAO().getMaxIdBill());
+                    bd.setcId(c.getcId());
+                    bd.setPrice(b.getProductPrice() * b.getQuantity());
+                    bd.setQuantity(b.getQuantity());
+                    bd.setpId(p.getId());
+                    new BillDetailDAO().insertBill(bd);
                   new ProductDAO().updateQuantityProduct(m.getValue(), p.getId());
                 }
                   hm.clear();
