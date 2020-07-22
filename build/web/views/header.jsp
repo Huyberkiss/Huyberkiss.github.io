@@ -62,7 +62,12 @@
                         </c:if>
                         <c:if test="${not empty id}">
 
-                           
+                            <%
+                                HashMap<Integer , Integer> hm = new HashMap<>();
+                                if(request.getSession().getAttribute("mapShoppingCart") != null){
+                                    hm = (HashMap<Integer, Integer>) request.getSession().getAttribute("mapShoppingCart");
+                                }
+                            %>
                             
                             <li class="nav-item"><a href="${pageContext.request.contextPath}/views/shopping-cart.jsp" class="nav-link"> <i
                                         class="fa fa-shopping-cart fa-2x"><span class="num-cart">[<%= hm.size() %>]</span></i>
