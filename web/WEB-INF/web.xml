@@ -28,6 +28,18 @@
         <servlet-name>PayProductController</servlet-name>
         <servlet-class>com.Node.Controller.PayProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VoucherController</servlet-name>
+        <servlet-class>com.Node.Controller.VoucherController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProfileController</servlet-name>
+        <servlet-class>com.Node.DAO.UpdateProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassController</servlet-name>
+        <servlet-class>com.Node.Controller.ChangePassController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>PayProductController</servlet-name>
         <url-pattern>/PayProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoucherController</servlet-name>
+        <url-pattern>/VoucherController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProfileController</servlet-name>
+        <url-pattern>/UpdateProfileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassController</servlet-name>
+        <url-pattern>/ChangePassController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

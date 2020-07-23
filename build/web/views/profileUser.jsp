@@ -160,13 +160,14 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <a href="editProfile.jsp" class="profile-edit-btn btn ">Edit Profile </a>
+                        
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'historybill.jsp'">Transaction history</button>
-                        <button class="btn btn-dark px-4 rounded-pill btn-group">Change Password</button>
+                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'changepassword.jsp'">Change Password</button>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">

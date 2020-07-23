@@ -50,6 +50,24 @@ public class CustomerDAO {
         return 0;
     }
 
+    public int changePassword(String user, String newPass) {
+        try {
+            String sql = "UPDATE `customer` SET `cPass` = MD5(?) WHERE `cUser` = ?";
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, newPass);
+            pst.setString(2, user);
+
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return -1;
+
+    }
+
     public int login(String user, String pass) {
 
         try {
@@ -72,19 +90,44 @@ public class CustomerDAO {
         return -1;
     }
 
-     public Customer getCustomer(int cId) {
+    public int updateCustomer(Customer c) {
+
+        try {
+            String sql = "UPDATE `customer` SET `cName`= ?,`cDob`= ? ,`cAddress`= ?,`cPhone`= ? ,`cEmail`= ?,`cGender`= ? ,`cDescription`= ? WHERE `cId` = ?";
+
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setString(1, c.getcName());
+            pst.setDate(2, (java.sql.Date) c.getcDob());
+            pst.setString(3, c.getcAddress());
+            pst.setString(4, c.getcPhone());
+            pst.setString(5, c.getcEmail());
+            pst.setInt(6, c.getcGender());
+            pst.setString(7, c.getcDescription());
+            pst.setInt(8, c.getcId());
+
+            return pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+
+    public Customer getCustomer(int cId) {
 
         try {
             String sql = "SELECT * FROM `customer` WHERE `cId`= ?";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, cId);
             ResultSet rs = pst.executeQuery();
-            
+
             if (rs.next()) {
-                return new Customer(rs.getInt("cId"), rs.getString("cName") , rs.getString("cUser"),rs.getString("cPass"),
-                        rs.getDate("cDob"),rs.getString("cAddress"), rs.getString("cPhone"), rs.getString("cEmail"),
-                        rs.getInt("cGender"),rs.getString("cDescription"),rs.getInt("cStatus"));
-                
+                return new Customer(rs.getInt("cId"), rs.getString("cName"), rs.getString("cUser"), rs.getString("cPass"),
+                        rs.getDate("cDob"), rs.getString("cAddress"), rs.getString("cPhone"), rs.getString("cEmail"),
+                        rs.getInt("cGender"), rs.getString("cDescription"), rs.getInt("cStatus"));
+
             }
 
         } catch (SQLException ex) {

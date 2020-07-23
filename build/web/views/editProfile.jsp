@@ -99,16 +99,22 @@
                 color: #0062cc;
             }
 
+            .ip-group{
+                margin : 6px 0 ;
+                margin-left: 15px;
+
+            }
             .btn-group{
-                margin : 20px 0 ;
-                margin-left: 20%;
-                border: none;
-                border-radius: 1.5rem;
-                width: 58%;
-                font-weight: 600;
-                color: #eee;
-                cursor: pointer;
-                font-size: 15px;
+                margin : 6px 0 ;
+                margin-left: 25%;
+
+            }
+
+            .btn-update{
+
+                float: right;
+
+                margin-right: 45%;
             }
 
         </style>
@@ -122,13 +128,13 @@
                 int id = Integer.parseInt(request.getSession().getAttribute("id").toString());
                 c = new CustomerDAO().getCustomer(id);
             }
-             String hiddenPhone = null;
-            try{
-                  hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0, 7), "********");
-            }catch(Exception e){
+            String hiddenPhone = null;
+            try {
+                hiddenPhone = c.getcPhone().replaceAll(c.getcPhone().substring(0, 7), "********");
+            } catch (Exception e) {
                 hiddenPhone = c.getcPhone();
             }
-           
+
             pageContext.setAttribute("hiddenPhone", hiddenPhone);
             pageContext.setAttribute("customer", c);
 
@@ -138,7 +144,8 @@
         <jsp:include page="header.jsp"/>
 
         <div class="container emp-profile">
-            <form method="post">
+            <form action="../UpdateProfileController" method="POST">
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -152,55 +159,63 @@
                     <div class="col-md-6">
                         <div class="profile-head">
 
-                            <h5>
-                                ${customer.cName}
-                            </h5>
                             <h1 class="proile-rating">Information</h1>
 
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <a href="editProfile.jsp" class="profile-edit-btn btn ">Edit Profile </a>
-                        
-                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'historybill.jsp'">Transaction history</button>
-                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'changepassword.jsp'">Change Password</button>
+
+
+                        <button class="btn btn-dark px-4 rounded-pill btn-group" type="button" onclick="window.location.href = 'profileUser.jsp'">
+                            Back to Profile</button>
+
                     </div>
+                    <input type="hidden" value="${customer.cId}" name="id">
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label>User Id:</label>
+                                        <label>Name:</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${customer.user}</p>
+                                        <input type="text" value="${customer.cName}" class="form-control ip-group" required name="name"/>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Gender:</label>
                                     </div>
-                                    <c:if test="${customer.cGender == 0 }">
-                                        <div class="col-md-6">
-                                            <p>Male</p>
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-check form-check-inline" style="margin-left: 10px;">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="0"> Male
+                                            </label>
                                         </div>
-                                    </c:if>
-                                    <c:if test="${customer.cGender == 1 }">
-                                        <div class="col-md-6">
-                                            <p>Female</p>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="1"> Female
+                                            </label>
                                         </div>
-                                    </c:if>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Date of birth: </label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><%= new SimpleDateFormat("dd-MM-yyyy").format(c.getcDob())%></p>
+
+
+
+                                        <input class="form-control" style="margin-left: 12px;" name="dob" type="date" value="2020-07-28" required id="example-date-input">
+
+
                                     </div>
                                 </div>
                                 <div class="row">
@@ -208,7 +223,7 @@
                                         <label>Email:</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${customer.cEmail}</p>
+                                        <input type="text" value="${customer.cEmail}" class="form-control ip-group" required name="email"/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -216,7 +231,7 @@
                                         <label>Phone:</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${hiddenPhone}</p>
+                                        <input type="text" value="${customer.cPhone}" class="form-control ip-group" required name="phone"/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -224,7 +239,7 @@
                                         <label>Description:</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${customer.cDescription}</p>
+                                        <input type="text" value="${customer.cDescription}" class="form-control ip-group" required name="des"/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -232,7 +247,7 @@
                                         <label>Address:</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>${customer.cAddress}</p>
+                                        <input type="text" value="${customer.cAddress}" class="form-control ip-group" required name="address"/>
                                     </div>
                                 </div>
                             </div>
@@ -240,6 +255,7 @@
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary btn-update">Update</button>
             </form>           
         </div>
     </body>

@@ -26,6 +26,7 @@
         </style>
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="container-fluid bg-form">
             <div class="row">
                 <div class="col-md-4 mx-auto form-container form-login">

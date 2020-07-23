@@ -48,7 +48,7 @@
 
                         <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
                             <button class="btn btn-outline-success" 
-                                    onclick="window.location.href = '${pageContext.request.contextPath}/views/profileUser.jsp'">back To profile</button>
+                                    onclick="window.location.href = '${pageContext.request.contextPath}/views/historybill.jsp'">back to history</button>
                            
                             <table class="table table-striped text-center">
                                 <thead>
