@@ -33,8 +33,8 @@
                         </li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/ProductController" class="nav-link">Products</a>
                         </li>
-                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/views/about.jsp" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/views/contact.jsp" class="nav-link">Contact</a></li>
 
 
 
