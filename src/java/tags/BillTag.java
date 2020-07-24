@@ -21,7 +21,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  *
  * @author admin
  */
-public class ProductTag extends SimpleTagSupport {
+public class BillTag extends SimpleTagSupport {
 
     private String database;
     private String user;
@@ -50,45 +50,44 @@ public class ProductTag extends SimpleTagSupport {
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 Connection conn = (Connection) DriverManager.getConnection(url + database, user, password);
 
-                String sql = "SELECT * FROM `product`";
+                String sql = "SELECT * FROM `bill`";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
+                
+                
 
                 String pro = "<table border='1' cellspacing='0' cellpadding='0'>"
                         + "<th>ID<th>"
-                        + "<th>Name<th>"
-                        + "<th>Price<th>"
-                        + "<th>Brand<th>"
-                        + "<th>Type<th>"
-                        + "<th>Category<th>"
+                        + "<th>CustomerID<th>"
+                        + "<th>ProducID<th>"
+                        + "<th>Adress<th>"
+                        + "<th>Phone<th>"
+                        + "<th>ProductPrice<th>"
                         + "<th>Quantity<th>"
-                        + "<th>Color<th>"
-                        + "<th>Length<th>"
-                        + "<th>Description<th>"
+                        + "<th>Voucher<th>"
+                        + "<th>PayID<th>"
                         + "<th>Status<th>"
-                        + "<th>ImageID<th>"
                         + "<th>Update<th>"
                         + "<th>Delete<th>";
                 while (rs.next()) {
                     pro += "<tr>"
+                            + "<td>" + rs.getInt("bId") + "<td>"
+                            + "<td>" + rs.getInt("cId") + "<td>"
                             + "<td>" + rs.getInt("pId") + "<td>"
-                            + "<td>" + rs.getString("pName") + "<td>"
-                            + "<td>" + rs.getFloat("pSalePrice") + "<td>"
-                            + "<td>" + rs.getString("pBrand") + "<td>"
-                            + "<td>" + rs.getString("pType") + "<td>"
-                            + "<td>" + rs.getString("pCategoryId") + "<td>"
-                            + "<td>" + rs.getInt("pQuantity") + "<td>"
-                            + "<td>" + rs.getString("color") + "<td>"
-                            + "<td>" + rs.getString("length") + "<td>"
-                            + "<td>" + rs.getString("pDescription") + "<td>"
-                            + "<td>" + rs.getInt("pStatusId") + "<td>"
-                            + "<td>" + rs.getString("pImageID") + "<td>"
-                           + "<td>" + "<a href=" + "\'updateProduct.jsp?id=" +rs.getInt("pId")+ "\'" +">Update</a>" + "<td>"
-                           + "<td>" + "<a href="+ "\'"+ "?id=" +rs.getInt("pId")+ "\'" + ">Delete</a>" + "</td>"
-                        +"</tr>";
+                            + "<td>" + rs.getString("address") + "<td>"
+                            + "<td>" + rs.getString("phone") + "<td>"
+                            + "<td>" + rs.getFloat("productPrice") + "<td>"
+                            + "<td>" + rs.getInt("quantity") + "<td>"
+                            + "<td>" + rs.getInt("vId") + "<td>"
+                            + "<td>" + rs.getInt("payId") + "<td>"
+                            + "<td>" + rs.getInt("sbID") + "<td>"
+                            + "<td>" + "<a href=" + "\'update.jsp?id=" +rs.getInt("bId")+ "\'" +">Update</a>" + "<td>"
+                           + "<td>" + "<a href="+ "\'"+ "?id=" +rs.getInt("bId")+ "\'" + ">Delete</a>" + "</td>"
+                        
+                            + "</tr>";
                 }
                 out.println("<br>");
-                out.println("<h> PRODUCT LIST</h>");
+                out.println("<h> BILL LIST</h>");
                 out.print(pro);
 
             } catch (SQLException ex) {
@@ -105,7 +104,7 @@ public class ProductTag extends SimpleTagSupport {
             //
             // out.println("    </blockquote>");
         } catch (java.io.IOException ex) {
-            throw new JspException("Error in Product tag", ex);
+            throw new JspException("Error in Bill tag", ex);
         }
     }
 

@@ -104,6 +104,19 @@ public class ProductDAO {
         return null;
 
     }
+    public int deleteProduct(int id){
+        String sql = "delete from product where pId=?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            
+            return pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
     public Product getProduct(int id) {
 

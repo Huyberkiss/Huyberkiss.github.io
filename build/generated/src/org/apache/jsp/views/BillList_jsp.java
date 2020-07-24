@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import java.sql.ResultSet;
 import com.Node.DAO.ProductDAO;
 
-public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class BillList_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -101,7 +101,7 @@ public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("}\r\n");
       out.write("\r\n");
       out.write("        </style>\r\n");
-      out.write("        <title>Product List</title>\r\n");
+      out.write("        <title>Bill List</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    \r\n");
       out.write("<body class=\"d-flex flex-row\">\r\n");
@@ -141,12 +141,13 @@ public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\r\n");
       out.write("        </nav>\r\n");
       out.write("    ");
-      if (_jspx_meth_mytag_productTag_0(_jspx_page_context))
+      if (_jspx_meth_mytag_billTag_0(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("\r\n");
       out.write("</html>\r\n");
+      out.write("\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -160,18 +161,18 @@ public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
     }
   }
 
-  private boolean _jspx_meth_mytag_productTag_0(PageContext _jspx_page_context)
+  private boolean _jspx_meth_mytag_billTag_0(PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  mytag:productTag
-    tags.ProductTag _jspx_th_mytag_productTag_0 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(tags.ProductTag.class) : new tags.ProductTag();
-    _jspx_th_mytag_productTag_0.setJspContext(_jspx_page_context);
-    _jspx_th_mytag_productTag_0.setDatabase("jewellery");
-    _jspx_th_mytag_productTag_0.setUrl("jdbc:mysql://localhost/");
-    _jspx_th_mytag_productTag_0.setPassword("");
-    _jspx_th_mytag_productTag_0.setUser("root");
-    _jspx_th_mytag_productTag_0.doTag();
+    //  mytag:billTag
+    tags.BillTag _jspx_th_mytag_billTag_0 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(tags.BillTag.class) : new tags.BillTag();
+    _jspx_th_mytag_billTag_0.setJspContext(_jspx_page_context);
+    _jspx_th_mytag_billTag_0.setDatabase("jewellery");
+    _jspx_th_mytag_billTag_0.setUrl("jdbc:mysql://localhost/");
+    _jspx_th_mytag_billTag_0.setPassword("");
+    _jspx_th_mytag_billTag_0.setUser("root");
+    _jspx_th_mytag_billTag_0.doTag();
     return false;
   }
 }

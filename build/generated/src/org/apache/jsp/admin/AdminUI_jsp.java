@@ -1,4 +1,4 @@
-package org.apache.jsp.views;
+package org.apache.jsp.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -120,19 +120,10 @@ public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </a>\r\n");
       out.write("                </li>\r\n");
       out.write("                    <li class=\"nav-item p-3 pl-4\">\r\n");
-      out.write("                        <a class=\"nav-link text-white\" href=\"insertProduct.jsp\">\r\n");
-      out.write("                            <i class=\"fas fa-fw fa-tachometer-alt\"></i>\r\n");
-      out.write("                            <span>Add new product</span>\r\n");
-      out.write("                        </a>\r\n");
-      out.write("                    </li>\r\n");
-      out.write("                    <li class=\"nav-item p-3 pl-4\">\r\n");
       out.write("                        <a class=\"nav-link text-white\" href=\"BillList.jsp\">\r\n");
       out.write("                            <i class=\"fas fa-fw fa-tachometer-alt\"></i>\r\n");
       out.write("                            <span>Bill List</span>\r\n");
       out.write("                        </a>\r\n");
-      out.write("                    </li>\r\n");
-      out.write("                    <li class=\"nav-item active p-3 pl-4\">\r\n");
-      out.write("                        <a class=\"nav-link text-white\" href=\"UserList.jsp\">User List</a>\r\n");
       out.write("                    </li>\r\n");
       out.write("                    <li class=\"nav-item p-3 pl-4\">\r\n");
       out.write("                        <a class=\"nav-link text-white\" href=\"homepage.jsp\">Log out</a>\r\n");
@@ -140,6 +131,22 @@ public final class AdminUI_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </ul>\r\n");
       out.write("            </div>\r\n");
       out.write("        </nav>\r\n");
+      out.write("    ");
+
+            if(request.getParameter("id")!=null){
+                int id = Integer.parseInt(request.getParameter("id"));
+                ProductDAO pDAO = new ProductDAO();
+                int kq = pDAO.deleteProduct(id);
+                if(kq!=0){
+                    out.print("<script>alert('Xoa thanh cong');</script>");
+                }
+                else{
+                    out.print("<script>alert('Xoa that bai');</script>");
+                }
+                out.print("<script>location.href='AdminUI.jsp'</script>");
+            }
+        
+      out.write("\r\n");
       out.write("    ");
       if (_jspx_meth_mytag_productTag_0(_jspx_page_context))
         return;

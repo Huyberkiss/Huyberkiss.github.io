@@ -1,13 +1,13 @@
 <%-- 
-    Document   : AdminGUI
-    Created on : Jul 22, 2020, 9:13:11 PM
-    Author     : BaoNQ
+    Document   : BillList
+    Created on : Jul 23, 2020, 2:58:53 PM
+    Author     : Admin
 --%>
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.Node.DAO.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="/WEB-INF/tlds/mylib.tld" prefix="product"%>
+<%@taglib uri="/WEB-INF/tlds/mylib.tld" prefix="mytag"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
         <style>
             <%@include file="/css/admin.css" %>
         </style>
-        <title>List</title>
+        <title>Bill List</title>
     </head>
     
 <body class="d-flex flex-row">
@@ -40,19 +40,10 @@
                     </a>
                 </li>
                     <li class="nav-item p-3 pl-4">
-                        <a class="nav-link text-white" href="insertProduct.jsp">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Add new product</span>
-                        </a>
-                    </li>
-                    <li class="nav-item p-3 pl-4">
                         <a class="nav-link text-white" href="BillList.jsp">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Bill List</span>
                         </a>
-                    </li>
-                    <li class="nav-item active p-3 pl-4">
-                        <a class="nav-link text-white" href="UserList.jsp">User List</a>
                     </li>
                     <li class="nav-item p-3 pl-4">
                         <a class="nav-link text-white" href="homepage.jsp">Log out</a>
@@ -60,7 +51,8 @@
                 </ul>
             </div>
         </nav>
-    <product:productTag database="jewellery" url="jdbc:mysql://localhost/" password="" user="root" />
+    <mytag:billTag database="jewellery" url="jdbc:mysql://localhost/" password="" user="root" />
     </body>
 
 </html>
+

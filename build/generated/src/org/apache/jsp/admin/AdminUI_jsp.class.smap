@@ -1,0 +1,18 @@
+SMAP
+AdminUI_jsp.java
+JSP
+*S JSP
+*F
++ 0 AdminUI.jsp
+admin/AdminUI.jsp
++ 1 admin.css
+css/admin.css
+*L
+5,18:52
+1#1,33:70
+22#0,33:102
+55,13:136
+67,2:149
+68:174,8
+68,5:153
+*E
