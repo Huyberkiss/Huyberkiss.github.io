@@ -140,5 +140,16 @@ public class ProductDAO {
         }
         return null;
     }
+    public ResultSet getProduct() {
+        String sql = "Select * from product";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            return rs;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
 }
