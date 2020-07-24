@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 05, 2020 at 05:01 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 5.6.40
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th7 24, 2020 lúc 06:03 PM
+-- Phiên bản máy phục vụ: 10.1.38-MariaDB
+-- Phiên bản PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jewellery`
+-- Cơ sở dữ liệu: `jewellery`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
@@ -62,10 +62,18 @@ CREATE TABLE `bill` (
   `sbID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `bill`
+--
+
+INSERT INTO `bill` (`bId`, `cId`, `pId`, `address`, `phone`, `productPrice`, `quantity`, `vId`, `payId`, `sbID`) VALUES
+(1, 1, 1, '66/25 abc disctrict , xyz city', '0934543232', 59.5, 1, 0, 1, 0),
+(2, 1, 1, '66/25 abc disctrict , xyz city', '0934543232', 59.5, 1, 0, 1, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `billdetail`
+-- Cấu trúc bảng cho bảng `billdetail`
 --
 
 CREATE TABLE `billdetail` (
@@ -80,25 +88,11 @@ CREATE TABLE `billdetail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
---
-
-CREATE TABLE `brand` (
-  `brId` int(11) NOT NULL,
-  `brName` varchar(30) DEFAULT NULL,
-  `brLogo` varchar(50) DEFAULT NULL,
-  `brDescription` varchar(30) DEFAULT NULL,
-  `brStatus` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
-  `categoryId` int(11) NOT NULL,
+  `categoryId` varchar(30) NOT NULL,
   `categoryName` varchar(30) DEFAULT NULL,
   `categoryDescription` varchar(30) DEFAULT NULL,
   `categoryStatus` int(11) DEFAULT NULL
@@ -107,7 +101,7 @@ CREATE TABLE `category` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -120,21 +114,23 @@ CREATE TABLE `customer` (
   `cPhone` varchar(12) DEFAULT NULL,
   `cEmail` varchar(75) DEFAULT NULL,
   `cGender` int(11) DEFAULT NULL,
-  `cDescription` varchar(30) DEFAULT NULL,
+  `cDescription` varchar(100) DEFAULT NULL,
   `cStatus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `customer`
+-- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`cId`, `cName`, `cUser`, `cPass`, `cDob`, `cAddress`, `cPhone`, `cEmail`, `cGender`, `cDescription`, `cStatus`) VALUES
-(1, 'Nguyen Duy Quang Huy', 'ndqhbadao', 'e10adc3949ba59abbe56e057f20f883e', '2000-12-25 00:00:00', '66/25 abc disctrict , xyz city', '0934543232', 'nva@gmail.com', 0, 'Hello everyone , my name is Hu', 0);
+(1, 'Nguyen Duy Quang Huy', 'ndqhbadao', 'e10adc3949ba59abbe56e057f20f883e', '2000-12-25 00:00:00', '66/25 abc disctrict , xyz city', '0934543232', 'nva@gmail.com', 0, 'Hello everyone , my name is Huy', 0),
+(2, 'Nguyá»?n Duy Quang Huy', 'ad', 'e10adc3949ba59abbe56e057f20f883e', '0002-02-03 00:00:00', '66/25 Nguyá»?n Truyá»?n Thanh', '0868953925', 'ndqhbadao@223gmail.com', 0, NULL, 0),
+(3, 'a', 'ndqhbadao', '202cb962ac59075b964b07152d234b70', '0004-02-02 00:00:00', 'aawd', '23345543345', '@cc.com', 0, NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Cấu trúc bảng cho bảng `history`
 --
 
 CREATE TABLE `history` (
@@ -147,19 +143,33 @@ CREATE TABLE `history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `image`
+-- Cấu trúc bảng cho bảng `image`
 --
 
 CREATE TABLE `image` (
-  `imgId` int(11) NOT NULL,
-  `pId` int(11) DEFAULT NULL,
+  `imgID` varchar(30) NOT NULL,
+  `pID` int(11) NOT NULL,
   `linkIMG` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `image`
+--
+
+INSERT INTO `image` (`imgID`, `pID`, `linkIMG`) VALUES
+('pd1', 1, 'pd1.jpg'),
+('pd2', 2, 'pd2.jpg'),
+('pd3', 3, 'pd3.jpg'),
+('pd4', 4, 'pd4.jpg'),
+('pd5', 5, 'pd5.jpg'),
+('pd6', 6, 'pd6.jpg'),
+('pd7', 7, 'pd7.jpg'),
+('pd8', 8, 'pd8.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Cấu trúc bảng cho bảng `payment`
 --
 
 CREATE TABLE `payment` (
@@ -171,43 +181,37 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
   `pId` int(11) NOT NULL,
-  `pName` varchar(30) DEFAULT NULL,
+  `pName` varchar(100) DEFAULT NULL,
   `pSalePrice` float DEFAULT NULL,
-  `pBrandId` int(11) DEFAULT NULL,
-  `pType` int(11) DEFAULT NULL,
-  `pCategoryId` int(11) DEFAULT NULL,
-  `pBillId` int(11) DEFAULT NULL,
+  `pBrand` varchar(30) DEFAULT NULL,
+  `pType` varchar(20) DEFAULT NULL,
+  `pCategoryId` varchar(30) DEFAULT NULL,
   `pQuantity` int(11) DEFAULT NULL,
-  `PDescription` varchar(100) DEFAULT NULL,
-  `pRating` int(11) DEFAULT NULL,
+  `color` varchar(20) NOT NULL,
+  `length` varchar(20) NOT NULL,
+  `pDescription` varchar(100) DEFAULT NULL,
   `pStatusId` int(11) DEFAULT NULL,
-  `pImageId` int(11) DEFAULT NULL
+  `pImageID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `product`
+--
+
+INSERT INTO `product` (`pId`, `pName`, `pSalePrice`, `pBrand`, `pType`, `pCategoryId`, `pQuantity`, `color`, `length`, `pDescription`, `pStatusId`, `pImageID`) VALUES
+(1, 'SWAROVSKI SYMBOLIC TREE OF LIFE NECKLACE, WHITE, RHODIUM PLATED', 59.5, 'Swa', 'Rhodium plated', 'necklace', 21, 'white', '5/8 inches', 'It combines perfectly with other pieces from the Angelic family.', 0, 'pd1'),
+(2, 'ATTRACT STUD PIERCED EARRINGS, GREEN, RHODIUM PLATED', 29.5, 'Swa', 'Rhodium plated', 'earing', 0, 'green', '1/4 inches', 'Shine with vibrant style in this delicate pair of stud earrings. The rhodium plated design features ', 0, 'pd2'),
+(3, 'ANGELIC BRACELET, WHITE, RHODIUM PLATED', 79.5, 'Swa', 'Rhodium plated', 'bracelet', 19, 'white', '6/8 inches', 'Pure, timeless sophistication. This rhodium-plated bracelet features a row of round clear crystals, ', 0, 'pd3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
---
-
-CREATE TABLE `rating` (
-  `ratingId` int(11) NOT NULL,
-  `userNameId` int(11) DEFAULT NULL,
-  `productName` varchar(30) DEFAULT NULL,
-  `comment` varchar(200) DEFAULT NULL,
-  `ratingPoint` float DEFAULT NULL,
-  `ratingActive` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
@@ -220,18 +224,18 @@ CREATE TABLE `role` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statusbill`
+-- Cấu trúc bảng cho bảng `statusbill`
 --
 
 CREATE TABLE `statusbill` (
-  `sbID` int(11) NOT NULL,
+  `sbID` varchar(20) NOT NULL,
   `sbName` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statusproduct`
+-- Cấu trúc bảng cho bảng `statusproduct`
 --
 
 CREATE TABLE `statusproduct` (
@@ -242,20 +246,7 @@ CREATE TABLE `statusproduct` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type`
---
-
-CREATE TABLE `type` (
-  `id` int(11) NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
-  `description` varchar(30) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `voucher`
+-- Cấu trúc bảng cho bảng `voucher`
 --
 
 CREATE TABLE `voucher` (
@@ -266,146 +257,118 @@ CREATE TABLE `voucher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`aId`),
+  ADD UNIQUE KEY `aUser` (`aUser`,`aPhone`,`aEmail`),
   ADD KEY `rId` (`rId`);
 
 --
--- Indexes for table `bill`
+-- Chỉ mục cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`bId`);
 
 --
--- Indexes for table `billdetail`
+-- Chỉ mục cho bảng `billdetail`
 --
 ALTER TABLE `billdetail`
   ADD PRIMARY KEY (`bdId`);
 
 --
--- Indexes for table `brand`
---
-ALTER TABLE `brand`
-  ADD PRIMARY KEY (`brId`);
-
---
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryId`);
 
 --
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`cId`);
+  ADD PRIMARY KEY (`cId`),
+  ADD UNIQUE KEY `cUser` (`cUser`,`cPhone`,`cEmail`);
 
 --
--- Indexes for table `history`
+-- Chỉ mục cho bảng `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`hId`);
 
 --
--- Indexes for table `image`
---
-ALTER TABLE `image`
-  ADD PRIMARY KEY (`imgId`);
-
---
--- Indexes for table `payment`
+-- Chỉ mục cho bảng `payment`
 --
 ALTER TABLE `payment`
   ADD PRIMARY KEY (`payID`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`pId`);
 
 --
--- Indexes for table `rating`
---
-ALTER TABLE `rating`
-  ADD PRIMARY KEY (`ratingId`);
-
---
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`rId`);
 
 --
--- Indexes for table `statusbill`
+-- Chỉ mục cho bảng `statusbill`
 --
 ALTER TABLE `statusbill`
   ADD PRIMARY KEY (`sbID`);
 
 --
--- Indexes for table `statusproduct`
+-- Chỉ mục cho bảng `statusproduct`
 --
 ALTER TABLE `statusproduct`
   ADD PRIMARY KEY (`spID`);
 
 --
--- Indexes for table `type`
---
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `voucher`
+-- Chỉ mục cho bảng `voucher`
 --
 ALTER TABLE `voucher`
   ADD PRIMARY KEY (`vId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
   MODIFY `aId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `bill`
+-- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `bId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `type`
---
-ALTER TABLE `type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `admin`
+-- Các ràng buộc cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`rId`) REFERENCES `role` (`rId`);
